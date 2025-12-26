@@ -107,12 +107,12 @@ h1, h2, h3, h4, h5, h6,
     flex-shrink: 0;
 }
 
-    .header-right {
-        display: flex;
-        align-items: center;
-        gap: 24px;
-        flex-shrink: 0;
-    }
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-shrink: 0;
+}
 
     /* Hide mobile Random button on desktop */
     .random-button-mobile {
@@ -1022,7 +1022,7 @@ h1, h2, h3, h4, h5, h6,
     .logo-image-footer {
         height: 28px;
         margin-bottom: 20px;
-    }
+}
 
 @media (max-width: 768px) {
     .public-header {

@@ -400,7 +400,7 @@ async function openQuestionModal(questionId = null) {
     // Reset form
     questionForm.reset();
     questionIdInput.value = '';
-
+    
     // Update modal title and button
     const modalTitle = questionModal.querySelector('.modal-header h2');
     const submitBtn = document.getElementById('submitQuestionBtn');
@@ -415,7 +415,7 @@ async function openQuestionModal(questionId = null) {
         modalTitle.textContent = 'Add Question';
         submitBtn.textContent = 'Add Question';
     }
-
+    
     // Show modal
     questionModal.style.display = 'flex';
 }
@@ -432,7 +432,7 @@ function closeQuestionModal() {
 // Load Question for Edit
 async function loadQuestionForEdit(questionId) {
     if (!supabase) return;
-
+    
     try {
         const { data: { session } } = await supabase.auth.getSession();
         if (!session) return;
@@ -463,7 +463,7 @@ async function loadQuestionForEdit(questionId) {
 // Handle Question Submit
 async function handleQuestionSubmit(event) {
     event.preventDefault();
-
+    
     if (!supabase) {
         alert('Supabase is not configured');
         return;
@@ -522,8 +522,8 @@ async function handleQuestionSubmit(event) {
             if (error) {
                 console.error('Error adding question:', error);
                 alert('Error adding question: ' + error.message);
-                return;
-            }
+            return;
+        }
 
             alert('Question added successfully!');
         }

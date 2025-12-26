@@ -1,0 +1,23 @@
+{
+  "name": "fictoverse-admin",
+  "version": "1.0.0",
+  "description": "FictoVerse Admin Dashboard with automatic static page generation",
+  "scripts": {
+    "generate": "node generate-static-pages.js",
+    "watch": "node watch-and-generate.js",
+    "start": "node watch-and-generate.js",
+    "server": "node auto-generate-server.js",
+    "auto": "node auto-generate-server.js"
+  },
+  "keywords": [
+    "fictoverse",
+    "admin",
+    "static-pages"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chokidar": "^3.5.3"
+  }
+}
+

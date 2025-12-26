@@ -128,13 +128,13 @@ async function checkAuthStatus() {
 // Show/Hide Login Modal
 function showLoginModal() {
     if (loginModal) {
-        loginModal.classList.add('show');
+    loginModal.classList.add('show');
     }
 }
 
 function hideLoginModal() {
     if (loginModal) {
-        loginModal.classList.remove('show');
+    loginModal.classList.remove('show');
     }
 }
 
@@ -337,7 +337,7 @@ function displayCharacters(characters) {
                         ? character.character_name.toLowerCase().trim().replace(/[^\w\s-]/g, '').replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '')
                         : character.id;
                     const url = `characters/${slug}.html`;
-                    window.open(url, '_blank');
+                window.open(url, '_blank');
                 }
             });
         }

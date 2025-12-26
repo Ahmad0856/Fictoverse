@@ -293,13 +293,18 @@ function generateCharacterPage(character, template) {
     // Also handle direct index.html links in footer
     html = html.replace(/<a href="index\.html"/g, '<a href="../index.html"');
     
+    // Update Privacy Policy and Terms of Use links
+    html = html.replace(/<a href="privacy-policy\.html">/g, '<a href="../privacy-policy.html">');
+    html = html.replace(/<a href="terms-of-use\.html">/g, '<a href="../terms-of-use.html">');
+    
+    // Update About us link
+    html = html.replace(/<a href="about-us\.html"/g, '<a href="../about-us.html"');
+    html = html.replace(/<a href="#" class="footer-nav-link">About us<\/a>/g, 
+        '<a href="../about-us.html" class="footer-nav-link">About us</a>');
+    
     // Update Game link in footer to use relative path
     html = html.replace(/<a href="public-game\.html" class="footer-nav-link">Game<\/a>/g, 
         '<a href="../public-game.html" class="footer-nav-link">Game</a>');
-    
-    // Update About us link
-    html = html.replace(/<a href="#" class="footer-nav-link">About us<\/a>/g, 
-        '<a href="../about-us.html" class="footer-nav-link">About us</a>');
     
     // Replace Trivia with Game in footer
     html = html.replace(/<a href="#" class="footer-nav-link">Trivia<\/a>/g, 

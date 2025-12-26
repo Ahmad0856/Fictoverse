@@ -398,7 +398,7 @@ async function generateFameBadges(character) {
 
     const supabase = window.supabaseClient;
     if (!supabase) {
-        fameBadges.innerHTML = '';
+    fameBadges.innerHTML = '';
         return;
     }
 
@@ -426,7 +426,7 @@ async function generateFameBadges(character) {
         }
 
         // Calculate category rank
-        if (character.category) {
+    if (character.category) {
             const { data: categoryCharacters } = await supabase
                 .from('characters')
                 .select('id, boost_count, character_name')
@@ -437,7 +437,7 @@ async function generateFameBadges(character) {
             if (categoryCharacters) {
                 const categoryRank = categoryCharacters.findIndex(c => c.id === character.id) + 1;
                 if (categoryRank > 0) {
-                    const categoryFormatted = formatName(character.category);
+        const categoryFormatted = formatName(character.category);
                     const categoryPath = getFilterPath('category', character.category);
                     badges.push({ 
                         text: `${categoryFormatted} #${categoryRank}`,
@@ -445,17 +445,17 @@ async function generateFameBadges(character) {
                     });
                 }
             }
-        }
+    }
 
         // Calculate birthday month rank
-        if (character.birthday) {
-            const [month] = character.birthday.split('-');
+    if (character.birthday) {
+        const [month] = character.birthday.split('-');
             const monthPadded = month.padStart(2, '0');
-            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 
-                               'July', 'August', 'September', 'October', 'November', 'December'];
-            const monthIndex = parseInt(month) - 1;
+        const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 
+                           'July', 'August', 'September', 'October', 'November', 'December'];
+        const monthIndex = parseInt(month) - 1;
             
-            if (monthIndex >= 0 && monthIndex < 12) {
+        if (monthIndex >= 0 && monthIndex < 12) {
                 const { data: monthCharacters } = await supabase
                     .from('characters')
                     .select('id, boost_count, character_name')
@@ -472,21 +472,21 @@ async function generateFameBadges(character) {
                             text: `Born in ${monthName} #${monthRank}`,
                             href: birthdayPath
                         });
-                    }
-                }
+        }
+    }
             }
         }
 
         // Display badges with clickable links
         fameBadges.innerHTML = '';
-        
-        badges.forEach(badge => {
+
+    badges.forEach(badge => {
             const badgeElement = document.createElement('a');
-            badgeElement.className = 'fame-badge';
-            badgeElement.textContent = badge.text;
+        badgeElement.className = 'fame-badge';
+        badgeElement.textContent = badge.text;
             badgeElement.href = badge.href;
-            fameBadges.appendChild(badgeElement);
-        });
+        fameBadges.appendChild(badgeElement);
+    });
     } catch (error) {
         console.error('Error generating fame badges:', error);
         fameBadges.innerHTML = '';
