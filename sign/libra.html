@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libra Characters - FictoVerse</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="../public.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="public-header">
+        <div class="header-container">
+            <div class="header-left">
+                <a href="../index.html" class="public-logo">
+                    <img src="../assets/Logo main.png" alt="FictoVerse Logo" class="logo-image">
+                </a>
+            </div>
+            <div class="header-center">
+                <div class="public-search-bar" id="searchBarContainer">
+                    <input type="text" placeholder="Search character" class="public-search-input" id="searchInput">
+                    <span class="public-search-icon">🔍</span>
+                    <div class="search-results" id="searchResults" style="display: none;"></div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="nav-icon-item" id="randomCharacterBtn">
+                    <div class="nav-icon-wrapper">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 3h5v5"></path>
+                            <path d="M8 3H3v5"></path>
+                            <path d="M12 22v-8.3a4 4 0 0 0-1.172-2.872L4 3"></path>
+                            <path d="m21 3-5 5"></path>
+                            <path d="M3 21l5-5"></path>
+                            <path d="M8 21h5v-5"></path>
+                            <path d="M16 21h5v-5"></path>
+                        </svg>
+                    </div>
+                    <span class="nav-icon-label">Random</span>
+                </div>
+                <div class="nav-icon-item" onclick="window.location.href='../popular.html'">
+                    <div class="nav-icon-wrapper">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                    </div>
+                    <span class="nav-icon-label">Popular</span>
+                </div>
+                <div class="nav-icon-item" onclick="window.location.href='../public-game.html'">
+                    <div class="nav-icon-wrapper">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 12h4m-2-2v4m8-8h.01M18 12h.01M15 9h.01M15 15h.01M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z"></path>
+                        </svg>
+                    </div>
+                    <span class="nav-icon-label">Game</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="home-main">
+        <div class="home-container">
+            <h1 class="section-title">Libra Characters</h1>
+            <div class="characters-grid" id="filteredCharactersGrid">
+        <div class="character-card character-card-ranked" onclick="window.location.href='../character/aoi-todo.html'">
+            <div class="character-card-image">
+                <img src="https://vmkuoyxvbcmaayetcbzq.supabase.co/storage/v1/object/public/character-images/characters/0.5170841232671708.png" alt="Aoi Todo" loading="lazy">
+                <div class="character-rank-badge">1</div>
+            </div>
+            <div class="character-card-name">Aoi Todo</div>
+            <div class="character-card-universe">Jujitsu Kaisen Character</div>
+        </div>
+        <div class="character-card character-card-ranked" onclick="window.location.href='../character/loki.html'">
+            <div class="character-card-image">
+                <img src="https://vmkuoyxvbcmaayetcbzq.supabase.co/storage/v1/object/public/character-images/characters/0.9405431824877682.jpeg" alt="Loki " loading="lazy">
+                <div class="character-rank-badge">2</div>
+            </div>
+            <div class="character-card-name">Loki </div>
+            <div class="character-card-universe">Marvel Character</div>
+        </div>
+            </div>
+            <div id="noResultsMessage" style="display: none; text-align: center; padding: 48px; color: #6b7280;">
+                <p>No characters found matching this filter.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="public-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <img src="../assets/Logo main.png" alt="FictoVerse Logo" class="logo-image-footer">
+                </div>
+                <div class="copyright">© 2024 FictoVerse. All rights reserved.</div>
+                <div class="privacy-link"><a href="#">Privacy Policy</a></div>
+            </div>
+            <div class="footer-right">
+                <nav class="footer-nav">
+                    <a href="../about-us.html" class="footer-nav-link">About us</a>
+                    <a href="../index.html" class="footer-nav-link">Home</a>
+                    <a href="../public-game.html" class="footer-nav-link">Game</a>
+                    <a href="../contact-us.html" class="footer-nav-link">Contact us</a>
+                </nav>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/fictionalbirthdays?igsh=dW16ODdteHFuaGt5" class="social-icon-link" target="_blank" rel="noopener noreferrer">
+                        <img src="../assets/instagram.png" alt="Instagram" class="social-icon-image">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../filter.js"></script>
+
+    <script>
+        // This page shows: Libra Characters
+        // Characters are pre-rendered above
+    </script></body>
+</html>
+

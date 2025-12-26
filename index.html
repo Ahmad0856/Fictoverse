@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FictoVerse - Character Birthdays</title>
+    <meta name="description" content="Discover fictional character birthdays today and tomorrow. Explore characters from DC, Marvel, and more.">
+    <link rel="icon" type="image/png" href="assets/Logo main.png">
+    <link rel="stylesheet" href="public.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="public-header">
+        <div class="header-container">
+            <div class="header-left">
+                <a href="index.html" class="public-logo">
+                    <img src="assets/Logo main.png" alt="FictoVerse Logo" class="logo-image">
+                </a>
+            </div>
+            <div class="header-center">
+                <div class="public-search-bar" id="searchBarContainer">
+                    <input type="text" placeholder="Search character" class="public-search-input" id="searchInput">
+                    <span class="public-search-icon">🔍</span>
+                    <div class="search-results" id="searchResults" style="display: none;"></div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="nav-icon-item" id="randomCharacterBtn">
+                    <div class="nav-icon-wrapper">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 3h5v5"></path>
+                            <path d="M8 3H3v5"></path>
+                            <path d="M12 22v-8.3a4 4 0 0 0-1.172-2.872L4 3"></path>
+                            <path d="m21 3-5 5"></path>
+                            <path d="M3 21l5-5"></path>
+                            <path d="M8 21h5v-5"></path>
+                            <path d="M16 21h5v-5"></path>
+                        </svg>
+                    </div>
+                    <span class="nav-icon-label">Random</span>
+                </div>
+                <div class="nav-icon-item" onclick="window.location.href='popular.html'">
+                    <div class="nav-icon-wrapper">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                    </div>
+                    <span class="nav-icon-label">Popular</span>
+                </div>
+                <div class="nav-icon-item" onclick="window.location.href='public-game.html'">
+                    <div class="nav-icon-wrapper">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 12h4m-2-2v4m8-8h.01M18 12h.01M15 9h.01M15 15h.01M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z"></path>
+                        </svg>
+                    </div>
+                    <span class="nav-icon-label">Game</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="home-main">
+        <div class="home-container">
+            <!-- This Month's Birthdays Section -->
+            <section class="birthday-section">
+                <h1 class="section-title">This Month's Birthdays</h1>
+                <div id="thisMonthBirthdays" class="characters-grid">
+                    <div class="loading">Loading this month's birthdays...</div>
+                </div>
+                <div id="thisMonthSeeMore" class="see-more-container" style="display: none;">
+                    <button class="see-more-button-large" onclick="window.location.href='public-index.html'">
+                        <span>See More</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Next Month's Birthdays Section -->
+            <section class="birthday-section">
+                <h2 class="section-title">Next Month's Birthdays</h2>
+                <div class="tomorrow-section-wrapper">
+                    <div id="nextMonthBirthdays" class="characters-grid">
+                        <div class="loading">Loading next month's birthdays...</div>
+                    </div>
+                    <div id="nextMonthSeeMore" class="see-more-container" style="display: none;">
+                        <button class="see-more-button-large" onclick="window.location.href='public-index.html'">
+                            <span>See More</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="public-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <img src="assets/Logo main.png" alt="FictoVerse Logo" class="logo-image-footer">
+                </div>
+                <p class="copyright">© 2026 FictionalBirthdays. All Rights Reserved.</p>
+                <p class="privacy-link">
+                    <a href="privacy-policy.html">Privacy Policy</a> | 
+                    <a href="terms-of-use.html">Terms of Use</a>
+                </p>
+            </div>
+            <div class="footer-right">
+                <div class="footer-nav">
+                    <a href="about-us.html" class="footer-nav-link">About us</a>
+                    <a href="home.html" class="footer-nav-link">Home</a>
+                    <a href="public-game.html" class="footer-nav-link">Game</a>
+                    <a href="contact-us.html" class="footer-nav-link">Contact us</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/fictionalbirthdays?igsh=dW16ODdteHFuaGt5" class="social-icon-link" target="_blank" rel="noopener noreferrer">
+                        <img src="assets/instagram.png" alt="Instagram" class="social-icon-image">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="home.js"></script>
+</body>
+</html>
+

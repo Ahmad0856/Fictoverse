@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aoi Todo - FictoVerse</title>
+    <meta name="description" content="Aoi Todo enters every situation loudly, confidently, and without apology. He speaks in absolutes, fights with joy, and judges people instantly yet beneath the b">
+    <link rel="stylesheet" href="../public.css">
+
+    <script>
+        window.characterData = {"id":"5ee06bec-18da-4e58-99b5-5149932fb35b","character_name":"Aoi Todo","nickname":"None","love_interest":"None","category_id":null,"fun_fact":"Despite his loud personality, Todo is one of the most strategically intelligent fighters in jujutsu society.","universe_id":null,"birthday_month":null,"birthday_day":null,"powers_skills":"Boogie Woogie /  Exceptional physical strength and endurance / Exceptional battle IQ","debut_year":2018,"sign":"libra","about":"Aoi Todo enters every situation loudly, confidently, and without apology. He speaks in absolutes, fights with joy, and judges people instantly yet beneath the bravado is a mind that reads battle like a language. Todo believes that understanding someone’s heart matters as much as understanding their strength, and he values authenticity above all else. What motivates him is connection: the rare thrill of encountering someone who fights with conviction and lives honestly. In the jujutsu world, Todo is seen as both absurd and terrifying a man who laughs in combat not because he underestimates danger, but because he understands it completely.","image_url":"https://vmkuoyxvbcmaayetcbzq.supabase.co/storage/v1/object/public/character-images/characters/0.5170841232671708.png","created_at":"2025-12-22T19:14:59.48622+00:00","updated_at":"2025-12-22T19:14:59.48622+00:00","universe":"jujitsu-kaisen","birthday":"09-23","category":"animanga","boost_count":0};
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="public-header">
+        <div class="header-container">
+            <div class="header-left">
+                <a href="../home.html" class="public-logo">
+                    <span class="logo-ficto">Ficto</span><span class="logo-verse">Verse</span>
+                </a>
+            </div>
+            <div class="header-center">
+                <div class="public-search-bar" id="searchBarContainer">
+                    <input type="text" placeholder="Search character" class="public-search-input" id="searchInput">
+                    <span class="public-search-icon">🔍</span>
+                    <div class="search-results" id="searchResults" style="display: none;"></div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="nav-icon-item" id="randomCharacterBtn">
+                    <div class="nav-icon-wrapper">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 3h5v5"></path>
+                            <path d="M8 3H3v5"></path>
+                            <path d="M12 22v-8.3a4 4 0 0 0-1.172-2.872L4 3"></path>
+                            <path d="m21 3-5 5"></path>
+                            <path d="M3 21l5-5"></path>
+                            <path d="M8 21h5v-5"></path>
+                            <path d="M16 21h5v-5"></path>
+                        </svg>
+                    </div>
+                    <span class="nav-icon-label"></span>
+                </div>
+                <div class="nav-icon-item" onclick="window.location.href='popular.html'">
+                    <div class="nav-icon-wrapper">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                    </div>
+                    <span class="nav-icon-label">Popular</span>
+                </div>
+                <div class="nav-icon-item">
+                    <div class="nav-icon-wrapper">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </div>
+                    <span class="nav-icon-label">Contact Us</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Character Profile -->
+    <main class="character-profile-main">
+        <div class="character-profile-container">
+            <!-- Character Hero Section -->
+            <section class="character-hero">
+                <div class="character-image-wrapper">
+                    <img id="characterImage" src="" alt="Character" class="character-image">
+                </div>
+                <div class="character-info-main">
+                    <div class="character-header">
+                        <div>
+                            <h1 class="character-name" id="characterName">Character Name</h1>
+                            <p class="character-category" id="characterCategory">Universe Character</p>
+                        </div>
+                        <div class="boost-section">
+                            <button class="boost-button" id="boostButton"><span class="boost-text">Boost</span>
+                            </button>
+                            <div class="boost-count" id="boostCount">0</div>
+                        </div>
+                    </div>
+                    <div class="character-details-grid">
+                        <div class="detail-item">
+                            <span class="detail-label">Birthday</span>
+                            <span class="detail-value" id="characterBirthday">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Sign</span>
+                            <span class="detail-value" id="characterSign">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Debut Year</span>
+                            <span class="detail-value" id="characterDebutYear">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Category</span>
+                            <span class="detail-value" id="characterCategoryValue">-</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Character Details Sections -->
+            <section class="character-details-sections">
+                <div class="detail-section">
+                    <h2 class="section-title">About</h2>
+                    <p class="section-content" id="characterAbout">-</p>
+                </div>
+
+                <div class="detail-section" id="nicknameSection" style="display: none;">
+                    <h2 class="section-title">Nickname</h2>
+                    <p class="section-content" id="characterNickname">-</p>
+                </div>
+
+                <div class="detail-section" id="powersSection" style="display: none;">
+                    <h2 class="section-title">Powers / Skills</h2>
+                    <p class="section-content" id="characterPowers">-</p>
+                </div>
+
+                <div class="detail-section" id="loveInterestSection" style="display: none;">
+                    <h2 class="section-title">Love Interest</h2>
+                    <p class="section-content" id="characterLoveInterest">-</p>
+                </div>
+
+                <div class="detail-section" id="funFactSection" style="display: none;">
+                    <h2 class="section-title">Fun fact</h2>
+                    <p class="section-content" id="characterFunFact">-</p>
+                </div>
+
+                <div class="detail-section">
+                    <h2 class="section-title">Fame</h2>
+                    <div class="fame-badges" id="fameBadges">
+                        <!-- Badges will be populated dynamically -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- More Characters Sections -->
+            <section class="related-characters-section" id="moreUniverseSection">
+                <h2 class="section-heading" id="moreUniverseHeading">More Characters</h2>
+                <div class="character-cards-container" id="moreUniverseCards">
+                    <!-- Character cards will be populated dynamically -->
+                </div>
+            </section>
+
+            <section class="related-characters-section" id="sameBirthdaySection">
+                <h2 class="section-heading" id="sameBirthdayHeading">Born in February</h2>
+                <div class="character-cards-container" id="sameBirthdayCards">
+                    <!-- Character cards will be populated dynamically -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="public-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <span class="logo-ficto">Ficto</span><span class="logo-verse">Verse</span>
+                </div>
+                <div class="footer-contact">
+                    <p class="contact-label">Contact us:</p>
+                    <p class="contact-info">Email: info@positivus.com</p>
+                    <p class="contact-info">Phone: +2348000000</p>
+                    <p class="contact-info">Address: 1234 Main St</p>
+                </div>
+                <p class="copyright">© 2026 FictionalBirthdays. All Rights Reserved.</p>
+                <p class="privacy-link"><a href="#">Privacy Policy</a></p>
+            </div>
+            <div class="footer-right">
+                <div class="footer-nav">
+                    <a href="#" class="footer-nav-link">About us</a>
+                    <a href="home.html" class="footer-nav-link">Home</a>
+                    <a href="#" class="footer-nav-link">Trivia</a>
+                </div>
+                <div class="footer-social">
+                    <div class="social-icon"></div>
+                    <div class="social-icon"></div>
+                    <div class="social-icon"></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../public.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FictoVerse - Admin Dashboard</title>
+    <link rel="icon" type="image/png" href="assets/Logo main.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+        <div class="nav-left">
+            <div class="logo">FictoVerse</div>
+            <div class="nav-breadcrumb">
+                <span class="nav-icon bookmark-icon"></span>
+                <span class="nav-icon star-icon"></span>
+                <span class="breadcrumb-text">Dashboards</span>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-text active">Overview</span>
+            </div>
+        </div>
+        <div class="nav-right">
+            <div class="search-bar">
+                <span class="search-icon">🔍</span>
+                <input type="text" placeholder="Search" class="search-input" id="searchInput">
+                <span class="search-shortcut">/</span>
+            </div>
+            <button class="icon-button bell-icon">🔔</button>
+            <button class="icon-button user-icon">👤</button>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">FictoVerse</div>
+            <div class="sidebar-item active">
+                <span class="sidebar-icon grid-icon">⊞</span>
+                <span class="sidebar-text">Overview</span>
+            </div>
+            <div class="sidebar-item" id="gameNav">
+                <span class="sidebar-icon game-icon">🎮</span>
+                <span class="sidebar-text">Game</span>
+            </div>
+            <div class="sidebar-item" id="addCharacterNav">
+                <span class="sidebar-icon plus-icon">+</span>
+                <span class="sidebar-text">Add Character</span>
+            </div>
+            <div class="sidebar-item" id="logoutNav">
+                <span class="sidebar-icon logout-icon">→</span>
+                <span class="sidebar-text">Log Out</span>
+            </div>
+            <div class="sidebar-footer">
+                <span class="sidebar-icon user-icon">👤</span>
+                <span class="sidebar-text">Employee</span>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="content-area">
+            <!-- Summary Cards -->
+            <div class="summary-cards">
+                <div class="summary-card card-characters">
+                    <div class="card-label">Characters</div>
+                    <div class="card-value" id="charactersCount">0</div>
+                </div>
+                <div class="summary-card card-universes">
+                    <div class="card-label">Universes</div>
+                    <div class="card-value" id="universesCount">0</div>
+                </div>
+            </div>
+
+            <!-- Characters Table -->
+            <div class="characters-table-container">
+                <div class="table-header">
+                    <h2 class="table-title">Characters</h2>
+                    <button class="btn-add-character" id="addCharacterBtn" title="Add New Character">
+                        <span>+</span>
+                    </button>
+                </div>
+                <table class="characters-table">
+                    <thead>
+                        <tr>
+                            <th class="col-character">Character</th>
+                            <th class="col-birthday">Birthday Date</th>
+                            <th class="col-universe">Universe</th>
+                            <th class="col-actions">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="charactersTableBody">
+                        <!-- Characters will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Login Modal (for private admin access) -->
+    <div class="login-modal" id="loginModal">
+        <div class="login-container">
+            <h2>Admin Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn btn-add">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="overview.js"></script>
+</body>
+</html>
+

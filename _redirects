@@ -1,0 +1,13 @@
+# Netlify Redirects Configuration
+# For clean character URLs
+
+# Redirect old format to new format
+/character.html?id=* /character/:id 301
+
+# Handle clean character URLs
+/character/:slug /character.html?slug=:slug 200
+
+
+
+
+

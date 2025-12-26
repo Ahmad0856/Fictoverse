@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Characters - FictoVerse</title>
+    <link rel="stylesheet" href="public.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="public-header">
+        <div class="header-container">
+            <div class="header-left">
+                <a href="home.html" class="public-logo">
+                    <span class="logo-ficto">Ficto</span><span class="logo-verse">Verse</span>
+                </a>
+            </div>
+            <div class="header-center">
+                <div class="public-search-bar" style="position: relative;">
+                    <input type="text" placeholder="Search character" class="public-search-input" id="searchInput">
+                    <span class="public-search-icon">🔍</span>
+                    <div id="searchResultsDropdown" class="search-results-dropdown" style="display: none;"></div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="nav-icon-item" id="randomCharacterBtn">
+                    <div class="nav-icon-wrapper">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 3h5v5"></path>
+                            <path d="M8 3H3v5"></path>
+                            <path d="M12 22v-8.3a4 4 0 0 0-1.172-2.872L4 3"></path>
+                            <path d="m21 3-5 5"></path>
+                            <path d="M3 21l5-5"></path>
+                            <path d="M8 21h5v-5"></path>
+                            <path d="M16 21h5v-5"></path>
+                        </svg>
+                    </div>
+                    <span class="nav-icon-label"></span>
+                </div>
+                <div class="nav-icon-item">
+                    <div class="nav-icon-wrapper">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <span class="nav-icon-label">Popular</span>
+                </div>
+                <div class="nav-icon-item">
+                    <div class="nav-icon-wrapper">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <span class="nav-icon-label">Contact Us</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="home-main">
+        <div class="home-container">
+            <h1 class="page-title" id="pageTitle">Characters</h1>
+            <div class="characters-grid" id="charactersGrid">
+                <!-- Characters will be loaded here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="public-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <span class="logo-ficto">Ficto</span><span class="logo-verse">Verse</span>
+                </div>
+                <div class="footer-contact">
+                    <p class="contact-label">Contact us:</p>
+                    <p class="contact-info">Email: info@positivus.com</p>
+                    <p class="contact-info">Phone: +1 (234) 567-89-00</p>
+                </div>
+            </div>
+            <div class="footer-right">
+                <div class="footer-nav">
+                    <a href="#" class="footer-nav-link">About us</a>
+                    <a href="home.html" class="footer-nav-link">Home</a>
+                    <a href="#" class="footer-nav-link">Trivia</a>
+                </div>
+                <div class="footer-social">
+                    <div class="social-icon"></div>
+                    <div class="social-icon"></div>
+                    <div class="social-icon"></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="characters.js"></script>
+</body>
+</html>
+

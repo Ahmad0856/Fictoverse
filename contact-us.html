@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - FictoVerse</title>
+    <meta name="description" content="Get in touch with FictoVerse. Send us your questions, feedback, or suggestions.">
+    <link rel="stylesheet" href="public.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="public-header">
+        <div class="header-container">
+            <div class="header-left">
+                <a href="index.html" class="public-logo">
+                    <img src="assets/Logo main.png" alt="FictoVerse Logo" class="logo-image">
+                </a>
+            </div>
+            <div class="header-center">
+                <div class="public-search-bar" id="searchBarContainer">
+                    <input type="text" placeholder="Search character" class="public-search-input" id="searchInput">
+                    <span class="public-search-icon">🔍</span>
+                    <div class="search-results" id="searchResults" style="display: none;"></div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="nav-icon-item" id="randomCharacterBtn">
+                    <div class="nav-icon-wrapper">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 3h5v5"></path>
+                            <path d="M8 3H3v5"></path>
+                            <path d="M12 22v-8.3a4 4 0 0 0-1.172-2.872L4 3"></path>
+                            <path d="m21 3-5 5"></path>
+                            <path d="M3 21l5-5"></path>
+                            <path d="M8 21h5v-5"></path>
+                            <path d="M16 21h5v-5"></path>
+                        </svg>
+                    </div>
+                    <span class="nav-icon-label">Random</span>
+                </div>
+                <div class="nav-icon-item" onclick="window.location.href='popular.html'">
+                    <div class="nav-icon-wrapper">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                    </div>
+                    <span class="nav-icon-label">Popular</span>
+                </div>
+                <div class="nav-icon-item" onclick="window.location.href='public-game.html'">
+                    <div class="nav-icon-wrapper">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 12h4m-2-2v4m8-8h.01M18 12h.01M15 9h.01M15 15h.01M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z"></path>
+                        </svg>
+                    </div>
+                    <span class="nav-icon-label">Game</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="contact-main">
+        <div class="contact-container">
+            <h1 class="contact-title">Contact Us</h1>
+            <p class="contact-subtitle">Have a question, suggestion, or feedback? We'd love to hear from you!</p>
+            
+            <form id="contactForm" class="contact-form">
+                <div class="form-group">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" id="name" name="name" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject" class="form-label">Subject</label>
+                    <input type="text" id="subject" name="subject" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" name="message" class="form-textarea" rows="6" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-button" id="submitButton">
+                    <span id="submitText">Send Message</span>
+                    <span id="submitLoader" style="display: none;">Sending...</span>
+                </button>
+                
+                <div id="formMessage" class="form-message" style="display: none;"></div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="public-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <img src="assets/Logo main.png" alt="FictoVerse Logo" class="logo-image-footer">
+                </div>
+                <p class="copyright">© 2026 FictionalBirthdays. All Rights Reserved.</p>
+                <p class="privacy-link">
+                    <a href="privacy-policy.html">Privacy Policy</a> | 
+                    <a href="terms-of-use.html">Terms of Use</a>
+                </p>
+            </div>
+            <div class="footer-right">
+                <div class="footer-nav">
+                    <a href="about-us.html" class="footer-nav-link">About us</a>
+                    <a href="index.html" class="footer-nav-link">Home</a>
+                    <a href="public-game.html" class="footer-nav-link">Game</a>
+                    <a href="contact-us.html" class="footer-nav-link">Contact us</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/fictionalbirthdays?igsh=dW16ODdteHFuaGt5" class="social-icon-link" target="_blank" rel="noopener noreferrer">
+                        <img src="assets/instagram.png" alt="Instagram" class="social-icon-image">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // Initialize EmailJS (you'll need to set up EmailJS and add your service ID, template ID, and public key)
+        (function() {
+            emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+        })();
+
+        // Setup search functionality (minimal version for contact page)
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const searchResults = document.getElementById('searchResults');
+            
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    // Search functionality can be added here if needed
+                });
+            }
+
+            // Random character button
+            const randomBtn = document.getElementById('randomCharacterBtn');
+            if (randomBtn) {
+                randomBtn.addEventListener('click', function() {
+                    // Navigate to random character
+                    window.location.href = 'character.html?random=true';
+                });
+            }
+
+            // Contact form submission
+            const contactForm = document.getElementById('contactForm');
+            const submitButton = document.getElementById('submitButton');
+            const submitText = document.getElementById('submitText');
+            const submitLoader = document.getElementById('submitLoader');
+            const formMessage = document.getElementById('formMessage');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const subject = document.getElementById('subject').value;
+                    const message = document.getElementById('message').value;
+
+                    // Show loading state
+                    submitText.style.display = 'none';
+                    submitLoader.style.display = 'inline';
+                    submitButton.disabled = true;
+                    formMessage.style.display = 'none';
+
+                    try {
+                        // Using EmailJS to send email
+                        // You need to set up EmailJS at https://www.emailjs.com/
+                        // Replace 'YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', and 'YOUR_PUBLIC_KEY' with your actual values
+                        
+                        const templateParams = {
+                            from_name: name,
+                            from_email: email,
+                            subject: subject,
+                            message: message,
+                            to_email: 'crafteduxx@gmail.com'
+                        };
+
+                        // For now, we'll use a simple mailto fallback
+                        // In production, set up EmailJS and uncomment the emailjs.send() call below
+                        
+                        // emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+                        //     .then(function(response) {
+                        //         showMessage('Thank you! Your message has been sent successfully.', 'success');
+                        //         contactForm.reset();
+                        //     }, function(error) {
+                        //         showMessage('Sorry, there was an error sending your message. Please try again.', 'error');
+                        //     });
+
+                        // Temporary solution: Use mailto link
+                        const mailtoLink = `mailto:crafteduxx@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+                        window.location.href = mailtoLink;
+                        
+                        showMessage('Opening your email client...', 'success');
+                        contactForm.reset();
+                        
+                    } catch (error) {
+                        showMessage('Sorry, there was an error. Please try again or email us directly at crafteduxx@gmail.com', 'error');
+                    } finally {
+                        submitText.style.display = 'inline';
+                        submitLoader.style.display = 'none';
+                        submitButton.disabled = false;
+                    }
+                });
+            }
+
+            function showMessage(text, type) {
+                formMessage.textContent = text;
+                formMessage.className = 'form-message ' + type;
+                formMessage.style.display = 'block';
+                
+                if (type === 'success') {
+                    setTimeout(() => {
+                        formMessage.style.display = 'none';
+                    }, 5000);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
