@@ -310,8 +310,59 @@ function setupSearch() {
     loadAllCharactersForSearch();
 }
 
+// Create slug from character name
+function createSlug(text) {
+    if (!text) return '';
+    return text
+        .toLowerCase()
+        .trim()
+        .replace(/[^\w\s-]/g, '') // Remove special characters
+        .replace(/[\s_-]+/g, '-') // Replace spaces and underscores with hyphens
+        .replace(/^-+|-+$/g, ''); // Remove leading/trailing hyphens
+}
+
+// Setup random character button
+function setupRandomCharacterButton() {
+    const randomBtn = document.getElementById('randomCharacterBtn');
+    if (randomBtn) {
+        randomBtn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            const supabase = window.supabaseClient;
+            if (!supabase) {
+                console.error('Supabase client not available');
+                return;
+            }
+
+            try {
+                const { data, error } = await supabase
+                    .from('characters')
+                    .select('id, character_name')
+                    .limit(1000);
+
+                if (error) {
+                    console.error('Error loading characters for random:', error);
+                    return;
+                }
+
+                if (!data || data.length === 0) {
+                    console.error('No characters found');
+                    return;
+                }
+
+                const randomIndex = Math.floor(Math.random() * data.length);
+                const randomChar = data[randomIndex];
+                const slug = createSlug(randomChar.character_name);
+                window.location.href = `character/${slug}.html`;
+            } catch (error) {
+                console.error('Error navigating to random character:', error);
+            }
+        });
+    }
+}
+
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
     loadBirthdays();
     setupSearch();
+    setupRandomCharacterButton();
 });

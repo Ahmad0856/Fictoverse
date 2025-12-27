@@ -430,6 +430,26 @@ function generateFilterPage(filterType, filterValue, filterLabel, characters) {
     // Remove entire footer-contact section from filter pages
     html = html.replace(/<div class="footer-contact">[\s\S]*?<\/div>/g, '');
     
+    // Update footer copyright
+    html = html.replace(/© 2024 FictoVerse\. All rights reserved\./g, '© 2026 FictionalBirthdays. All Rights Reserved.');
+    html = html.replace(/© 2023 Positivus\. All Rights Reserved\./g, '© 2026 FictionalBirthdays. All Rights Reserved.');
+    
+    // Update footer privacy links
+    html = html.replace(/<div class="privacy-link"><a href="#">Privacy Policy<\/a><\/div>/g, 
+        '<p class="privacy-link">\n                    <a href="../privacy-policy.html">Privacy Policy</a> | \n                    <a href="../terms-of-use.html">Terms of Use</a>\n                </p>');
+    html = html.replace(/<div class="privacy-link">.*?Privacy Policy.*?<\/div>/g, 
+        '<p class="privacy-link">\n                    <a href="../privacy-policy.html">Privacy Policy</a> | \n                    <a href="../terms-of-use.html">Terms of Use</a>\n                </p>');
+    
+    // Update footer copyright div to p tag
+    html = html.replace(/<div class="copyright">© 2026 FictionalBirthdays\. All Rights Reserved\.<\/div>/g, 
+        '<p class="copyright">© 2026 FictionalBirthdays. All Rights Reserved.</p>');
+    
+    // Update Home link in footer
+    html = html.replace(/<a href="home\.html" class="footer-nav-link">Home<\/a>/g, 
+        '<a href="../index.html" class="footer-nav-link">Home</a>');
+    html = html.replace(/<a href="\.\.\/home\.html" class="footer-nav-link">Home<\/a>/g, 
+        '<a href="../index.html" class="footer-nav-link">Home</a>');
+    
     // Update Popular nav link
     html = html.replace(/<div class="nav-icon-item">[\s\S]*?<span class="nav-icon-label">Popular<\/span>[\s\S]*?<\/div>/, 
         `<div class="nav-icon-item" onclick="window.location.href='../popular.html'">
