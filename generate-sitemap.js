@@ -18,7 +18,7 @@ const SUPABASE_URL = 'https://vmkuoyxvbcmaayetcbzq.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZta3VveXh2YmNtYWF5ZXRjYnpxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU5MDg3MzksImV4cCI6MjA4MTQ4NDczOX0.EyMPPzDjWM2rOGu6GyThNw9vRAHJBMWJVExY5DKSYmk';
 
 // Base URL for your website (update this with your actual domain)
-const BASE_URL = 'https://yourdomain.com'; // TODO: Update this with your actual domain
+const BASE_URL = 'https://fictionalbirthdays.com';
 
 // Helper function to create a slug from a string
 function createSlug(text) {

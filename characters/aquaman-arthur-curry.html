@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aquaman / Arthur Curry - FictoVerse</title>
     <meta name="description" content="Aquaman stands for belonging between worlds. Born of both land and sea, Arthur Curry has spent his life navigating two identities that rarely understand each ot">
+    <link rel="icon" type="image/png" href="assets/Logo main.png">
     <link rel="stylesheet" href="../public.css">
 
     <script>
@@ -16,8 +17,8 @@
     <header class="public-header">
         <div class="header-container">
             <div class="header-left">
-                <a href="../home.html" class="public-logo">
-                    <span class="logo-ficto">Ficto</span><span class="logo-verse">Verse</span>
+                <a href="index.html" class="public-logo">
+                    <img src="assets/Logo main.png" alt="FictoVerse Logo" class="logo-image">
                 </a>
             </div>
             <div class="header-center">
@@ -40,7 +41,7 @@
                             <path d="M16 21h5v-5"></path>
                         </svg>
                     </div>
-                    <span class="nav-icon-label"></span>
+                    <span class="nav-icon-label">Random</span>
                 </div>
                 <div class="nav-icon-item" onclick="window.location.href='popular.html'">
                     <div class="nav-icon-wrapper">
@@ -50,14 +51,13 @@
                     </div>
                     <span class="nav-icon-label">Popular</span>
                 </div>
-                <div class="nav-icon-item">
+                <div class="nav-icon-item" onclick="window.location.href='public-game.html'">
                     <div class="nav-icon-wrapper">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 12h4m-2-2v4m8-8h.01M18 12h.01M15 9h.01M15 15h.01M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z"></path>
                         </svg>
                     </div>
-                    <span class="nav-icon-label">Contact Us</span>
+                    <span class="nav-icon-label">Game</span>
                 </div>
             </div>
         </div>
@@ -70,6 +70,17 @@
             <section class="character-hero">
                 <div class="character-image-wrapper">
                     <img id="characterImage" src="" alt="Character" class="character-image">
+                    <button class="random-button-mobile" id="randomCharacterBtnMobile">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 3h5v5"></path>
+                            <path d="M8 3H3v5"></path>
+                            <path d="M12 22v-8.3a4 4 0 0 0-1.172-2.872L4 3"></path>
+                            <path d="m21 3-5 5"></path>
+                            <path d="M3 21l5-5"></path>
+                            <path d="M8 21h5v-5"></path>
+                            <path d="M16 21h5v-5"></path>
+                        </svg>
+                    </button>
                 </div>
                 <div class="character-info-main">
                     <div class="character-header">
@@ -78,7 +89,8 @@
                             <p class="character-category" id="characterCategory">Universe Character</p>
                         </div>
                         <div class="boost-section">
-                            <button class="boost-button" id="boostButton"><span class="boost-text">Boost</span>
+                            <button class="boost-button" id="boostButton">
+                                <span class="boost-text">Boost</span>
                             </button>
                             <div class="boost-count" id="boostCount">0</div>
                         </div>
@@ -161,27 +173,25 @@
         <div class="footer-container">
             <div class="footer-left">
                 <div class="footer-logo">
-                    <span class="logo-ficto">Ficto</span><span class="logo-verse">Verse</span>
-                </div>
-                <div class="footer-contact">
-                    <p class="contact-label">Contact us:</p>
-                    <p class="contact-info">Email: info@positivus.com</p>
-                    <p class="contact-info">Phone: +2348000000</p>
-                    <p class="contact-info">Address: 1234 Main St</p>
+                    <img src="assets/Logo main.png" alt="FictoVerse Logo" class="logo-image-footer">
                 </div>
                 <p class="copyright">© 2026 FictionalBirthdays. All Rights Reserved.</p>
-                <p class="privacy-link"><a href="#">Privacy Policy</a></p>
+                <p class="privacy-link">
+                    <a href="privacy-policy.html">Privacy Policy</a> | 
+                    <a href="terms-of-use.html">Terms of Use</a>
+                </p>
             </div>
             <div class="footer-right">
                 <div class="footer-nav">
-                    <a href="#" class="footer-nav-link">About us</a>
-                    <a href="home.html" class="footer-nav-link">Home</a>
-                    <a href="#" class="footer-nav-link">Trivia</a>
+                    <a href="about-us.html" class="footer-nav-link">About us</a>
+                    <a href="../home.html" class="footer-nav-link">Home</a>
+                    <a href="../public-game.html" class="footer-nav-link">Game</a>
+                    <a href="../contact-us.html" class="footer-nav-link">Contact us</a>
                 </div>
                 <div class="footer-social">
-                    <div class="social-icon"></div>
-                    <div class="social-icon"></div>
-                    <div class="social-icon"></div>
+                    <a href="https://www.instagram.com/fictionalbirthdays?igsh=dW16ODdteHFuaGt5" class="social-icon-link" target="_blank" rel="noopener noreferrer">
+                        <img src="../assets/instagram.png" alt="Instagram" class="social-icon-image">
+                    </a>
                 </div>
             </div>
         </div>

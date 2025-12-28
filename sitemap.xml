@@ -2,37 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://fictionalbirthdays.com/</loc>
-    <lastmod>2025-12-27</lastmod>
+    <lastmod>2025-12-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://fictionalbirthdays.com/home.html</loc>
-    <lastmod>2025-12-27</lastmod>
+    <lastmod>2025-12-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://fictionalbirthdays.com/characters</loc>
-    <lastmod>2025-12-27</lastmod>
+    <lastmod>2025-12-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://fictionalbirthdays.com/universes</loc>
-    <lastmod>2025-12-27</lastmod>
+    <lastmod>2025-12-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://fictionalbirthdays.com/about</loc>
-    <lastmod>2025-12-27</lastmod>
+    <lastmod>2025-12-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fictionalbirthdays.com/contact</loc>
-    <lastmod>2025-12-27</lastmod>
+    <lastmod>2025-12-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -199,6 +199,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://fictionalbirthdays.com/character/nezuko-kamado</loc>
+    <lastmod>2025-12-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://fictionalbirthdays.com/character/hawkeye-clint-barton</loc>
     <lastmod>2025-12-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -231,6 +237,12 @@
   <url>
     <loc>https://fictionalbirthdays.com/character/ant-man-scott-lang</loc>
     <lastmod>2025-12-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fictionalbirthdays.com/character/giyu-tomioka</loc>
+    <lastmod>2025-12-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -295,13 +307,13 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://fictionalbirthdays.com/character/yuji-itadori</loc>
-    <lastmod>2025-12-22</lastmod>
+    <loc>https://fictionalbirthdays.com/character/yuta-okkotsu</loc>
+    <lastmod>2025-12-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://fictionalbirthdays.com/character/yuta-okkotsu</loc>
+    <loc>https://fictionalbirthdays.com/character/yuji-itadori</loc>
     <lastmod>2025-12-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -313,14 +325,20 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://fictionalbirthdays.com/character/inosuke-hashibira</loc>
+    <lastmod>2025-12-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://fictionalbirthdays.com/character/kento-nanamin</loc>
     <lastmod>2025-12-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://fictionalbirthdays.com/character/megumi-fushiguro</loc>
-    <lastmod>2025-12-22</lastmod>
+    <loc>https://fictionalbirthdays.com/character/gyomei-himejima</loc>
+    <lastmod>2025-12-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -343,20 +361,14 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://fictionalbirthdays.com/character/megumi-fushiguro</loc>
+    <lastmod>2025-12-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://fictionalbirthdays.com/character/magneto-max-eisenhardt</loc>
     <lastmod>2025-12-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://fictionalbirthdays.com/character/salihuwaleed</loc>
-    <lastmod>2025-12-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://fictionalbirthdays.com/character/rengoku-kyojiro</loc>
-    <lastmod>2025-12-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -387,6 +399,48 @@
   <url>
     <loc>https://fictionalbirthdays.com/character/tanjiro-kamado</loc>
     <lastmod>2025-12-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fictionalbirthdays.com/character/zenitsu-agatsuma</loc>
+    <lastmod>2025-12-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fictionalbirthdays.com/character/sanemi-shinazugawa</loc>
+    <lastmod>2025-12-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fictionalbirthdays.com/character/obanai-iguro</loc>
+    <lastmod>2025-12-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fictionalbirthdays.com/character/shinobu-kocho</loc>
+    <lastmod>2025-12-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fictionalbirthdays.com/character/mitsuri-kanroji</loc>
+    <lastmod>2025-12-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fictionalbirthdays.com/character/muichiro-tokito</loc>
+    <lastmod>2025-12-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fictionalbirthdays.com/character/rengoku-kyojuro</loc>
+    <lastmod>2025-12-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
