@@ -2,37 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://fictionalbirthdays.com/</loc>
-    <lastmod>2025-12-28</lastmod>
+    <lastmod>2025-12-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://fictionalbirthdays.com/home.html</loc>
-    <lastmod>2025-12-28</lastmod>
+    <lastmod>2025-12-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://fictionalbirthdays.com/characters</loc>
-    <lastmod>2025-12-28</lastmod>
+    <lastmod>2025-12-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://fictionalbirthdays.com/universes</loc>
-    <lastmod>2025-12-28</lastmod>
+    <lastmod>2025-12-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://fictionalbirthdays.com/about</loc>
-    <lastmod>2025-12-28</lastmod>
+    <lastmod>2025-12-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fictionalbirthdays.com/contact</loc>
-    <lastmod>2025-12-28</lastmod>
+    <lastmod>2025-12-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -187,12 +187,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://fictionalbirthdays.com/character/black-panther-tchalla</loc>
-    <lastmod>2025-12-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://fictionalbirthdays.com/character/mr-fantastic-reed-richards</loc>
     <lastmod>2025-12-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -242,7 +236,7 @@
   </url>
   <url>
     <loc>https://fictionalbirthdays.com/character/giyu-tomioka</loc>
-    <lastmod>2025-12-28</lastmod>
+    <lastmod>2025-12-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -441,6 +435,66 @@
   <url>
     <loc>https://fictionalbirthdays.com/character/rengoku-kyojuro</loc>
     <lastmod>2025-12-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fictionalbirthdays.com/character/black-panther-tchalla</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fictionalbirthdays.com/character/kibutsuji-muzan</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fictionalbirthdays.com/character/akaza</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fictionalbirthdays.com/character/gyutaro</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fictionalbirthdays.com/character/daki</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fictionalbirthdays.com/character/hantengu</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fictionalbirthdays.com/character/kokushibo</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fictionalbirthdays.com/character/gyokko</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fictionalbirthdays.com/character/dma</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fictionalbirthdays.com/character/rui</loc>
+    <lastmod>2025-12-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

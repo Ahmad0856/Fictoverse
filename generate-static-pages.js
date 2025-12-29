@@ -360,8 +360,8 @@ function generateCharacterPage(character, template) {
     // Also update search bar to be consistent
     html = html.replace(/<div class="public-search-bar"[^>]*>/g, 
         '<div class="public-search-bar" id="searchBarContainer">');
-    html = html.replace(/<div id="searchResultsDropdown" class="search-results-dropdown"/g, 
-        '<div class="search-results" id="searchResults"');
+    // Ensure search results dropdown has correct ID
+    html = html.replace(/id="searchResults"/g, 'id="searchResultsDropdown"');
     
     // Update Contact Us icon to game icon (replace old email/envelope icon)
     const oldEmailIcon = /<svg[^>]*>[\s\S]*?<path d="M4 4h16c1\.1 0 2 \.9 2 2v12c0 1\.1-\.9 2-2 2H4c-1\.1 0-2-\.9-2-2V6c0-1\.1\.9-2 2-2z"><\/path>[\s\S]*?<polyline points="22,6 12,13 2,6"><\/polyline>[\s\S]*?<\/svg>/;

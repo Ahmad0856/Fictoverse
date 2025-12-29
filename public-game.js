@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.error('Failed to initialize Supabase client');
                     gameContent.innerHTML = '<div class="error">Failed to initialize database connection. Please refresh the page.</div>';
                 }
-            } else {
+    } else {
                 console.log('Supabase library not loaded yet, waiting...');
             }
         };
@@ -123,19 +123,19 @@ function setupEventListeners() {
     // Search functionality (if search is available)
     if (searchInput && typeof setupSearch === 'function') {
         setupSearch();
-    }
-}
+            }
+        }
 
 // Load Questions from Supabase
 async function loadQuestions() {
     console.log('loadQuestions called');
     console.log('supabase client:', !!gameSupabaseClient);
-    
+
     if (!gameSupabaseClient) {
         console.error('Supabase client not initialized!');
         gameContent.innerHTML = '<div class="error">Unable to connect to database. Please refresh the page.</div>';
-        return;
-    }
+                    return;
+                }
 
     try {
         console.log('Fetching questions from game_questions table...');
@@ -222,8 +222,8 @@ async function loadQuestions() {
                     name: char.character_name,
                     image: char.image_url
                 };
-            });
-        }
+    });
+}
 
         // Combine questions with character data
         questions = questionsData.map(q => ({
@@ -264,12 +264,12 @@ function shuffleArray(array) {
 
 // Display Current Question
 async function displayQuestion() {
-    if (currentQuestionIndex >= questions.length) {
-        showResults();
-        return;
-    }
+        if (currentQuestionIndex >= questions.length) {
+            showResults();
+            return;
+        }
 
-    const question = questions[currentQuestionIndex];
+        const question = questions[currentQuestionIndex];
     selectedAnswer = null;
     answerSubmitted = false;
     answerPercentages = null;
@@ -290,11 +290,11 @@ async function displayQuestion() {
         }
     }
 
-    gameContent.innerHTML = `
+        gameContent.innerHTML = `
         <div class="question-container">
             <div class="question-progress">
-                Question ${currentQuestionIndex + 1} of ${questions.length}
-            </div>
+                    Question ${currentQuestionIndex + 1} of ${questions.length}
+                </div>
             <div class="question-text">${question.question}</div>
             <div class="options-container">
                 <div class="option-card" data-option="A" onclick="selectOptionImmediately('A')">
@@ -317,9 +317,9 @@ async function displayQuestion() {
             <button class="submit-answer-btn" id="nextBtn" onclick="nextQuestion()" style="display: none;">
                 Next
             </button>
-        </div>
-    `;
-}
+            </div>
+        `;
+    }
 
 // Load Answer Percentages
 async function loadAnswerPercentages(questionId) {
@@ -330,7 +330,7 @@ async function loadAnswerPercentages(questionId) {
             .from('game_answers')
             .select('selected_option')
             .eq('question_id', questionId);
-
+        
         if (error) {
             console.error('Error loading answer percentages:', error);
             return;
@@ -379,8 +379,8 @@ window.selectOptionImmediately = async function(option) {
         } catch (error) {
             console.error('Error saving answer:', error);
         }
-    }
-    
+}
+
     // Reload percentages to include this answer
     await loadAnswerPercentages(question.id);
     
@@ -446,8 +446,8 @@ function showResults() {
             <h2 class="results-title">Game Complete!</h2>
             <p class="results-text">You've answered all ${questions.length} questions.</p>
             <button class="play-again-btn" onclick="restartGame()">Play Again</button>
-        </div>
-    `;
+                    </div>
+                `;
 }
 
 // Restart Game - exposed globally
@@ -465,7 +465,7 @@ window.restartGame = function() {
 function navigateToRandomCharacter() {
     if (typeof window.navigateToRandomCharacter === 'function') {
         window.navigateToRandomCharacter();
-    } else {
+        } else {
         window.location.href = 'home.html';
     }
 }
