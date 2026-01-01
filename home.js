@@ -86,7 +86,7 @@ function createCharacterCard(character) {
 }
 
 // Load and display characters for a specific month
-async function loadMonthBirthdays(month, containerId, seeMoreId) {
+async function loadMonthBirthdays(month, containerId, seeMoreId, limit = null) {
     const container = document.getElementById(containerId);
     const seeMoreContainer = document.getElementById(seeMoreId);
     const supabase = window.supabaseClient;
@@ -127,12 +127,18 @@ async function loadMonthBirthdays(month, containerId, seeMoreId) {
 
         // Sort characters
         const sortedCharacters = sortCharacters(data);
+        
+        // Apply limit if specified
+        const displayCharacters = limit ? sortedCharacters.slice(0, limit) : sortedCharacters;
+        const totalCount = sortedCharacters.length;
 
-        // Display all characters (no limit for month view)
-        container.innerHTML = sortedCharacters.map(createCharacterCard).join('');
+        // Display characters (limited if specified)
+        container.innerHTML = displayCharacters.map(createCharacterCard).join('');
 
         // Show "See More" button linking to the month filter page
-        if (sortedCharacters.length > 0) {
+        // Only show if there are more characters than the limit (or if no limit was set and there are characters)
+        const shouldShowMore = limit ? totalCount > limit : totalCount > 0;
+        if (shouldShowMore) {
             const monthName = getMonthName(month);
             // Create slug matching the format used in generate-static-pages.js
             const monthSlug = monthName
@@ -198,7 +204,7 @@ async function loadBirthdays() {
 
     await Promise.all([
         loadMonthBirthdays(currentMonth, 'thisMonthBirthdays', 'thisMonthSeeMore'),
-        loadMonthBirthdays(nextMonth, 'nextMonthBirthdays', 'nextMonthSeeMore')
+        loadMonthBirthdays(nextMonth, 'nextMonthBirthdays', 'nextMonthSeeMore', 3)
     ]);
 }
 
@@ -310,59 +316,8 @@ function setupSearch() {
     loadAllCharactersForSearch();
 }
 
-// Create slug from character name
-function createSlug(text) {
-    if (!text) return '';
-    return text
-        .toLowerCase()
-        .trim()
-        .replace(/[^\w\s-]/g, '') // Remove special characters
-        .replace(/[\s_-]+/g, '-') // Replace spaces and underscores with hyphens
-        .replace(/^-+|-+$/g, ''); // Remove leading/trailing hyphens
-}
-
-// Setup random character button
-function setupRandomCharacterButton() {
-    const randomBtn = document.getElementById('randomCharacterBtn');
-    if (randomBtn) {
-        randomBtn.addEventListener('click', async (e) => {
-            e.preventDefault();
-            const supabase = window.supabaseClient;
-            if (!supabase) {
-                console.error('Supabase client not available');
-                return;
-            }
-
-            try {
-                const { data, error } = await supabase
-                    .from('characters')
-                    .select('id, character_name')
-                    .limit(1000);
-
-                if (error) {
-                    console.error('Error loading characters for random:', error);
-                    return;
-                }
-
-                if (!data || data.length === 0) {
-                    console.error('No characters found');
-                    return;
-                }
-
-                const randomIndex = Math.floor(Math.random() * data.length);
-                const randomChar = data[randomIndex];
-                const slug = createSlug(randomChar.character_name);
-                window.location.href = `character/${slug}.html`;
-            } catch (error) {
-                console.error('Error navigating to random character:', error);
-            }
-        });
-    }
-}
-
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
     loadBirthdays();
     setupSearch();
-    setupRandomCharacterButton();
 });

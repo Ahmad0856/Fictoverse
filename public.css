@@ -954,7 +954,7 @@ h1, h2, h3, h4, h5, h6,
 /* Next Month's See More: to the right of cards */
 #nextMonthSeeMore.see-more-container {
     display: flex;
-    margin-left: -80px;
+    margin-left: 0;
     flex-shrink: 0;
 }
 
