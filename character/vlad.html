@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Character Profile - FictoVerse</title>
-    <meta name="description" content="View detailed profile of fictional characters including birthday, powers, and fun facts.">
+    <title>Vlad - FictoVerse</title>
+    <meta name="description" content="View Vlad's profile including birthday, powers, and fun facts on FictoVerse.">
     <link rel="icon" type="image/png" href="assets/Logo main.png">
-    <link rel="stylesheet" href="public.css">
+    <link rel="stylesheet" href="../public.css">
 </head>
 <body>
     <!-- Header -->
     <header class="public-header">
         <div class="header-container">
             <div class="header-left">
-                <a href="index.html" class="public-logo">
-                    <img src="assets/Logo main.png" alt="FictoVerse Logo" class="logo-image">
-                </a>
+                <a href="../index.html" class="public-logo"><img src="../assets/Logo main.png" alt="FictoVerse Logo" class="logo-image"></a>
             </div>
             <div class="header-center">
                 <div class="public-search-bar" id="searchBarContainer">
@@ -39,7 +37,7 @@
                     </div>
                     <span class="nav-icon-label">Random</span>
                 </div>
-                <div class="nav-icon-item" onclick="window.location.href='popular.html'">
+                <div class="nav-icon-item" onclick="window.location.href='../popular.html'">
                     <div class="nav-icon-wrapper">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
@@ -47,7 +45,7 @@
                     </div>
                     <span class="nav-icon-label">Popular</span>
                 </div>
-                <div class="nav-icon-item" onclick="window.location.href='public-game.html'">
+                <div class="nav-icon-item" onclick="window.location.href='../public-game.html'">
                     <div class="nav-icon-wrapper">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M6 12h4m-2-2v4m8-8h.01M18 12h.01M15 9h.01M15 15h.01M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z"></path>
@@ -168,19 +166,17 @@
     <footer class="public-footer">
         <div class="footer-container">
             <div class="footer-left">
-                <div class="footer-logo">
-                    <img src="assets/Logo main.png" alt="FictoVerse Logo" class="logo-image-footer">
-                </div>
+                <div class="footer-logo"><img src="../assets/Logo main.png" alt="FictoVerse Logo" class="logo-image-footer"></div>
                 <p class="copyright">© 2026 FictionalBirthdays. All Rights Reserved.</p>
                 <p class="privacy-link">
-                    <a href="privacy-policy.html">Privacy Policy</a> | 
-                    <a href="terms-of-use.html">Terms of Use</a>
+                    <a href="../privacy-policy.html">Privacy Policy</a> | 
+                    <a href="../terms-of-use.html">Terms of Use</a>
                 </p>
             </div>
             <div class="footer-right">
                 <div class="footer-nav">
-                    <a href="about-us.html" class="footer-nav-link">About us</a>
-                    <a href="home.html" class="footer-nav-link">Home</a>
+                    <a href="../about-us.html" class="footer-nav-link">About us</a>
+                    <a href="../index.html" class="footer-nav-link">Home</a>
                     <a href="../public-game.html" class="footer-nav-link">Game</a>
                     <a href="../contact-us.html" class="footer-nav-link">Contact us</a>
                 </div>
@@ -194,7 +190,11 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="public.js"></script>
-<script type="text/javascript"> var infolinks_pid = 3442574; var infolinks_wsid = 0; </script> <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
-</body>
+    <script src="../public.js"></script>
+
+    <script>
+        // Auto-load this character by ID
+        window.CHARACTER_ID = 'a0447b0a-7adb-4c42-b7ec-e8ee227fdbdc';
+        window.CHARACTER_SLUG = 'vlad';
+    </script></body>
 </html>

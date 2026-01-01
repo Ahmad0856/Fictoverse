@@ -376,7 +376,8 @@ function generateCharacterPage(character, template) {
         // Auto-load this character by ID
         window.CHARACTER_ID = '${character.id}';
         window.CHARACTER_SLUG = '${slug}';
-    </script>`;
+    </script>
+<script type="text/javascript"> var infolinks_pid = 3442574; var infolinks_wsid = 0; </script> <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>`;
     
     // Insert script before closing body tag
     html = html.replace('</body>', inlineScript + '</body>');
@@ -494,7 +495,8 @@ function generateFilterPage(filterType, filterValue, filterLabel, characters) {
     <script>
         // This page shows: ${filterLabel} Characters
         // Characters are pre-rendered above
-    </script>`;
+    </script>
+<script type="text/javascript"> var infolinks_pid = 3442574; var infolinks_wsid = 0; </script> <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>`;
     
     html = html.replace('</body>', inlineScript + '</body>');
     
