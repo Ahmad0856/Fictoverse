@@ -864,7 +864,22 @@ function performSearch(searchTerm) {
     });
 
     if (results.length === 0) {
-        searchResults.innerHTML = '<div class="search-result-item no-results">No results found</div>';
+        const currentPath = window.location.pathname;
+        const isInSubdir = currentPath.includes('/character/') || currentPath.includes('/birthday/') || 
+                          currentPath.includes('/sign/') || currentPath.includes('/category/') || 
+                          currentPath.includes('/universe/');
+        const prefix = isInSubdir ? '../' : '';
+        
+        searchResults.innerHTML = `
+            <div class="search-empty-state">
+                <div class="search-empty-icon">🔍</div>
+                <div class="search-empty-message">No results found</div>
+                <div class="search-empty-subtitle">Try searching for a different character</div>
+                <button class="search-cta-button" onclick="document.getElementById('searchInput').focus(); document.getElementById('searchInput').value=''; document.getElementById('searchInput').placeholder='Search character...';">
+                    Search Character
+                </button>
+            </div>
+        `;
         searchResults.style.display = 'block';
         return;
     }

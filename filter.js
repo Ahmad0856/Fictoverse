@@ -430,7 +430,16 @@ function performSearch(searchTerm) {
     });
 
     if (results.length === 0) {
-        searchResults.innerHTML = '<div class="search-result-item no-results">No results found</div>';
+        searchResults.innerHTML = `
+            <div class="search-empty-state">
+                <div class="search-empty-icon">🔍</div>
+                <div class="search-empty-message">No results found</div>
+                <div class="search-empty-subtitle">Try searching for a different character</div>
+                <button class="search-cta-button" onclick="document.getElementById('searchInput').focus(); document.getElementById('searchInput').value=''; document.getElementById('searchInput').placeholder='Search character...';">
+                    Search Character
+                </button>
+            </div>
+        `;
         searchResults.style.display = 'block';
         return;
     }
