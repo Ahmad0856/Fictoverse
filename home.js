@@ -290,12 +290,24 @@ function setupSearch() {
         }, 300); // Debounce for 300ms
     });
 
-    // Handle Enter key - navigate to search page
+    // Handle Enter key - navigate to search page or no-results page
     searchInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
             const searchTerm = searchInput.value.trim();
             if (searchTerm) {
-                window.location.href = `public-index.html?search=${encodeURIComponent(searchTerm)}`;
+                // Perform search to check if there are results
+                const term = searchTerm.toLowerCase().trim();
+                const hasResults = allCharacters.some(char => 
+                    char.character_name && char.character_name.toLowerCase().includes(term)
+                );
+                
+                if (hasResults) {
+                    // Navigate to search results page
+                    window.location.href = `public-index.html?search=${encodeURIComponent(searchTerm)}`;
+                } else {
+                    // Navigate to no-results page
+                    window.location.href = `no-results.html?search=${encodeURIComponent(searchTerm)}`;
+                }
             } else {
                 window.location.href = 'public-index.html';
             }

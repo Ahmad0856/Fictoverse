@@ -430,16 +430,7 @@ function performSearch(searchTerm) {
     });
 
     if (results.length === 0) {
-        searchResults.innerHTML = `
-            <div class="search-empty-state">
-                <div class="search-empty-icon">🔍</div>
-                <div class="search-empty-message">No results found</div>
-                <div class="search-empty-subtitle">Try searching for a different character</div>
-                <button class="search-cta-button" onclick="document.getElementById('searchInput').focus(); document.getElementById('searchInput').value=''; document.getElementById('searchInput').placeholder='Search character...';">
-                    Search Character
-                </button>
-            </div>
-        `;
+        searchResults.innerHTML = '<div class="search-result-item no-results">No results found</div>';
         searchResults.style.display = 'block';
         return;
     }
@@ -483,17 +474,38 @@ function setupSearch() {
         }, 300); // Debounce for 300ms
     });
 
-    // Handle Enter key - navigate to search page
+    // Handle Enter key - navigate to search page or no-results page
     searchInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
             const searchTerm = searchInput.value.trim();
             if (searchTerm) {
+                // Perform search to check if there are results
+                const term = searchTerm.toLowerCase().trim();
+                const hasResults = allCharacters.some(char => 
+                    char.character_name && char.character_name.toLowerCase().includes(term)
+                ) || Array.from(searchableItems.universes).some(uni => 
+                    formatName(uni).toLowerCase().includes(term)
+                ) || Array.from(searchableItems.categories).some(cat => 
+                    formatName(cat).toLowerCase().includes(term)
+                ) || Array.from(searchableItems.months).some(month => 
+                    month.includes(term)
+                ) || Array.from(searchableItems.signs).some(sign => 
+                    sign.toLowerCase().includes(term)
+                );
+                
                 const currentPath = window.location.pathname;
                 const isInSubdir = currentPath.includes('/birthday/') || currentPath.includes('/sign/') || 
                                   currentPath.includes('/category/') || currentPath.includes('/universe/') ||
                                   currentPath.includes('/character/');
                 const prefix = isInSubdir ? '../' : '';
-                window.location.href = `${prefix}home.html?search=${encodeURIComponent(searchTerm)}`;
+                
+                if (hasResults) {
+                    // Navigate to search results page
+                    window.location.href = `${prefix}public-index.html?search=${encodeURIComponent(searchTerm)}`;
+                } else {
+                    // Navigate to no-results page
+                    window.location.href = `${prefix}no-results.html?search=${encodeURIComponent(searchTerm)}`;
+                }
             }
         }
     });
