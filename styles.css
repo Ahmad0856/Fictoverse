@@ -645,6 +645,37 @@ body {
     margin-bottom: 20px;
 }
 
+.login-container textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 80px;
+}
+
+.login-container textarea:focus {
+    outline: none;
+    border-color: #4f46e5;
+}
+
+.login-container .btn-cancel {
+    background-color: #6b7280;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.login-container .btn-cancel:hover {
+    background-color: #4b5563;
+}
+
 /* Modal Overlay */
 .modal-overlay {
     display: none;
@@ -887,6 +918,30 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.summary-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.summary-card.active-tab {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.summary-card.active-tab::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 0 0 12px 12px;
 }
 
 .card-characters {

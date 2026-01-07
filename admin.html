@@ -119,10 +119,13 @@
                                     </select>
                                     <button type="button" class="btn-add-new" id="addUniverseBtn" title="Add New Universe">+</button>
                                 </div>
-                                <div class="add-new-input" id="addUniverseInput" style="display: none;">
+                                <div class="add-new-input" id="addUniverseInput" style="display: none; flex-direction: column; align-items: stretch;">
                                     <input type="text" id="newUniverseName" placeholder="Enter new universe name">
-                                    <button type="button" class="btn-save-new" id="saveUniverseBtn">Save</button>
-                                    <button type="button" class="btn-cancel-new" id="cancelUniverseBtn">Cancel</button>
+                                    <textarea id="newUniverseDescription" placeholder="Enter universe description (optional)" rows="3" style="width: 100%; padding: 8px; margin-top: 8px; border: 1px solid #ddd; border-radius: 4px; font-family: inherit; resize: vertical;"></textarea>
+                                    <div style="display: flex; gap: 8px; margin-top: 8px;">
+                                        <button type="button" class="btn-save-new" id="saveUniverseBtn">Save</button>
+                                        <button type="button" class="btn-cancel-new" id="cancelUniverseBtn">Cancel</button>
+                                    </div>
                                 </div>
                             </div>
 

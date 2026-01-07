@@ -131,6 +131,17 @@ async function loadFilteredCharacters() {
     const pageTitle = document.getElementById('filterPageTitle');
     const titleText = filterLabel || 'Filtered';
     pageTitle.textContent = `${titleText} Characters`;
+    
+    // Load and display universe description if this is a universe page
+    if (filterType === 'universe') {
+        loadUniverseDescription(filterValue);
+    } else {
+        // Hide description for non-universe pages
+        const descriptionEl = document.getElementById('filterPageDescription');
+        if (descriptionEl) {
+            descriptionEl.style.display = 'none';
+        }
+    }
 
     try {
         let query = supabase.from('characters').select('*');
@@ -522,6 +533,54 @@ function setupSearch() {
 
     // Load all characters for search on page load
     loadAllCharactersForSearch();
+}
+
+// Load universe description
+async function loadUniverseDescription(universeSlug) {
+    const supabase = window.supabaseClient;
+    if (!supabase) {
+        return;
+    }
+    
+    const descriptionEl = document.getElementById('filterPageDescription');
+    if (!descriptionEl) {
+        return;
+    }
+    
+    try {
+        // Fetch all universes and match by name (handles slug vs name differences)
+        const { data: universes, error } = await supabase
+            .from('universes')
+            .select('name, description');
+        
+        if (error || !universes) {
+            descriptionEl.style.display = 'none';
+            return;
+        }
+        
+        // Try to match universe - convert slug to formatted name and compare
+        const universeName = formatName(universeSlug);
+        const universeLower = universeName.toLowerCase();
+        
+        // Find matching universe (case-insensitive)
+        const matchingUniverse = universes.find(u => {
+            const uNameLower = u.name.toLowerCase();
+            // Try exact match, slug match, or formatted name match
+            return uNameLower === universeLower || 
+                   createSlug(u.name) === createSlug(universeSlug) ||
+                   formatName(createSlug(u.name)) === universeName;
+        });
+        
+        if (matchingUniverse && matchingUniverse.description) {
+            descriptionEl.textContent = matchingUniverse.description;
+            descriptionEl.style.display = 'block';
+        } else {
+            descriptionEl.style.display = 'none';
+        }
+    } catch (error) {
+        console.error('Error loading universe description:', error);
+        descriptionEl.style.display = 'none';
+    }
 }
 
 // Initialize on page load

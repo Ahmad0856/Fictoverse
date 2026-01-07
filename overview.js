@@ -14,6 +14,9 @@ if (typeof window.supabaseClient === 'undefined' && SUPABASE_URL !== 'YOUR_SUPAB
 // DOM Elements (will be set in DOMContentLoaded)
 let loginModal, loginForm, logoutNav, addCharacterNav, addCharacterBtn;
 let charactersTableBody, charactersCount, universesCount, searchInput;
+let charactersTab, universesTab, charactersTableContainer, universesTableContainer, universesTableBody;
+let editUniverseModal, editUniverseForm, editUniverseId, editUniverseName, editUniverseDescription, cancelEditUniverseBtn;
+let currentView = 'characters'; // 'characters' or 'universes'
 
 // Check authentication status on page load
 document.addEventListener('DOMContentLoaded', () => {
@@ -27,6 +30,17 @@ document.addEventListener('DOMContentLoaded', () => {
     charactersCount = document.getElementById('charactersCount');
     universesCount = document.getElementById('universesCount');
     searchInput = document.getElementById('searchInput');
+    charactersTab = document.getElementById('charactersTab');
+    universesTab = document.getElementById('universesTab');
+    charactersTableContainer = document.getElementById('charactersTableContainer');
+    universesTableContainer = document.getElementById('universesTableContainer');
+    universesTableBody = document.getElementById('universesTableBody');
+    editUniverseModal = document.getElementById('editUniverseModal');
+    editUniverseForm = document.getElementById('editUniverseForm');
+    editUniverseId = document.getElementById('editUniverseId');
+    editUniverseName = document.getElementById('editUniverseName');
+    editUniverseDescription = document.getElementById('editUniverseDescription');
+    cancelEditUniverseBtn = document.getElementById('cancelEditUniverseBtn');
     
     checkAuthStatus();
     setupEventListeners();
@@ -35,7 +49,11 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Navigation elements:', {
         addCharacterNav: !!addCharacterNav,
         addCharacterBtn: !!addCharacterBtn,
-        logoutNav: !!logoutNav
+        logoutNav: !!logoutNav,
+        charactersTab: !!charactersTab,
+        universesTab: !!universesTab,
+        universesTableBody: !!universesTableBody,
+        universesTableContainer: !!universesTableContainer
     });
 });
 
@@ -92,6 +110,37 @@ function setupEventListeners() {
     if (searchInput) {
         searchInput.addEventListener('input', handleSearch);
     }
+
+    // Tab switching
+    if (charactersTab) {
+        charactersTab.addEventListener('click', () => {
+            switchView('characters');
+        });
+    }
+
+    if (universesTab) {
+        universesTab.addEventListener('click', () => {
+            switchView('universes');
+        });
+    }
+
+    // Edit Universe Modal
+    if (editUniverseForm) {
+        editUniverseForm.addEventListener('submit', handleEditUniverseSubmit);
+    }
+
+    if (cancelEditUniverseBtn) {
+        cancelEditUniverseBtn.addEventListener('click', hideEditUniverseModal);
+    }
+
+    // Close modal when clicking outside
+    if (editUniverseModal) {
+        editUniverseModal.addEventListener('click', (e) => {
+            if (e.target === editUniverseModal) {
+                hideEditUniverseModal();
+            }
+        });
+    }
 }
 
 // Check Authentication Status
@@ -116,7 +165,11 @@ async function checkAuthStatus() {
             showAdminContent(mainContainer, topNav);
             // Load data when authenticated
             loadSummaryCounts();
-            loadCharacters();
+            if (currentView === 'characters') {
+                loadCharacters();
+            } else {
+                loadUniverses();
+            }
         }
     } catch (error) {
         console.error('Error checking auth status:', error);
@@ -187,7 +240,11 @@ async function handleLogin(event) {
             hideLoginModal();
             showAdminContent(mainContainer, topNav);
             loadSummaryCounts();
-            loadCharacters();
+            if (currentView === 'characters') {
+                loadCharacters();
+            } else {
+                loadUniverses();
+            }
         }
     } catch (error) {
         console.error('Login error:', error);
@@ -353,8 +410,334 @@ function handleSearch(event) {
     
     clearTimeout(searchTimeout);
     searchTimeout = setTimeout(() => {
-        loadCharacters(searchTerm);
+        if (currentView === 'characters') {
+            loadCharacters(searchTerm);
+        } else {
+            loadUniverses(searchTerm);
+        }
     }, 300); // Debounce search
+}
+
+// Switch View (Characters/Universes)
+function switchView(view) {
+    currentView = view;
+    
+    // Clear search input when switching views
+    if (searchInput) {
+        searchInput.value = '';
+    }
+    
+    // Update tab active states
+    if (charactersTab && universesTab) {
+        if (view === 'characters') {
+            charactersTab.classList.add('active-tab');
+            universesTab.classList.remove('active-tab');
+            if (charactersTableContainer) charactersTableContainer.style.display = 'block';
+            if (universesTableContainer) universesTableContainer.style.display = 'none';
+            loadCharacters();
+        } else {
+            universesTab.classList.add('active-tab');
+            charactersTab.classList.remove('active-tab');
+            if (universesTableContainer) universesTableContainer.style.display = 'block';
+            if (charactersTableContainer) charactersTableContainer.style.display = 'none';
+            loadUniverses();
+        }
+    }
+}
+
+// Load Universes
+async function loadUniverses(searchTerm = '') {
+    if (!supabase) {
+        console.error('Supabase not initialized');
+        return;
+    }
+
+    try {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session) {
+            console.error('No session found');
+            return;
+        }
+
+        let query = supabase
+            .from('universes')
+            .select('*')
+            .order('name', { ascending: true });
+
+        // Add search filter if search term exists
+        if (searchTerm) {
+            query = query.ilike('name', `%${searchTerm}%`);
+        }
+
+        const { data, error } = await query;
+
+        if (error) {
+            console.error('Error loading universes:', error);
+            return;
+        }
+
+        console.log('Universes loaded:', data);
+        displayUniverses(data || []);
+    } catch (error) {
+        console.error('Error loading universes:', error);
+    }
+}
+
+// Display Universes in Table
+function displayUniverses(universes) {
+    console.log('Displaying universes:', universes);
+    console.log('universesTableBody element:', universesTableBody);
+    
+    if (!universesTableBody) {
+        console.error('universesTableBody element not found');
+        // Try to get it again
+        universesTableBody = document.getElementById('universesTableBody');
+        if (!universesTableBody) {
+            console.error('Still cannot find universesTableBody element');
+            return;
+        }
+    }
+    
+    universesTableBody.innerHTML = '';
+
+    if (universes.length === 0) {
+        universesTableBody.innerHTML = `
+            <tr>
+                <td colspan="3" style="text-align: center; padding: 32px; color: #6b7280;">
+                    No universes found.${searchInput && searchInput.value.trim() ? ' Try a different search term.' : ''}
+                </td>
+            </tr>
+        `;
+        return;
+    }
+
+    universes.forEach(universe => {
+        const row = document.createElement('tr');
+        
+        // Format created date
+        let createdDisplay = '-';
+        if (universe.created_at) {
+            const date = new Date(universe.created_at);
+            createdDisplay = date.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+            });
+        }
+
+        row.innerHTML = `
+            <td class="col-character">${universe.name || '-'}</td>
+            <td class="col-universe">${createdDisplay}</td>
+            <td class="col-actions">
+                <button class="btn-edit" onclick="event.stopPropagation(); editUniverse('${universe.id}')" title="Edit Universe">✏️</button>
+                <button class="btn-delete" onclick="event.stopPropagation(); deleteUniverse('${universe.id}', '${universe.name.replace(/'/g, "\\'")}')" title="Delete Universe">🗑️</button>
+            </td>
+        `;
+
+        universesTableBody.appendChild(row);
+    });
+}
+
+// Show Edit Universe Modal
+function showEditUniverseModal() {
+    if (editUniverseModal) {
+        editUniverseModal.classList.add('show');
+    }
+}
+
+// Hide Edit Universe Modal
+function hideEditUniverseModal() {
+    if (editUniverseModal) {
+        editUniverseModal.classList.remove('show');
+        if (editUniverseForm) {
+            editUniverseForm.reset();
+        }
+        if (editUniverseId) {
+            editUniverseId.value = '';
+        }
+    }
+}
+
+// Edit Universe - Load data and show modal
+async function editUniverse(universeId) {
+    if (!supabase) {
+        alert('Supabase is not configured');
+        return;
+    }
+
+    try {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session) {
+            alert('Please log in to edit universes');
+            return;
+        }
+
+        // Fetch universe data - select only fields that definitely exist
+        const { data: universe, error } = await supabase
+            .from('universes')
+            .select('id, name, created_at')
+            .eq('id', universeId)
+            .single();
+
+        if (error) {
+            alert('Error loading universe: ' + error.message);
+            return;
+        }
+
+        if (!universe) {
+            alert('Universe not found');
+            return;
+        }
+
+        // Try to get description separately (if column exists)
+        let description = '';
+        try {
+            const { data: universeWithDesc } = await supabase
+                .from('universes')
+                .select('description')
+                .eq('id', universeId)
+                .single();
+            
+            if (universeWithDesc && universeWithDesc.description !== undefined) {
+                description = universeWithDesc.description || '';
+            }
+        } catch (descError) {
+            // Description column doesn't exist, that's okay
+            console.log('Description column not available');
+        }
+
+        // Populate form fields
+        if (editUniverseId) editUniverseId.value = universe.id;
+        if (editUniverseName) editUniverseName.value = universe.name || '';
+        if (editUniverseDescription) editUniverseDescription.value = description;
+
+        // Show modal
+        showEditUniverseModal();
+    } catch (error) {
+        console.error('Error loading universe for editing:', error);
+        alert('An error occurred while loading the universe');
+    }
+}
+
+// Handle Edit Universe Form Submission
+async function handleEditUniverseSubmit(event) {
+    event.preventDefault();
+
+    if (!supabase) {
+        alert('Supabase is not configured');
+        return;
+    }
+
+    const universeId = editUniverseId ? editUniverseId.value : null;
+    const name = editUniverseName ? editUniverseName.value.trim() : '';
+    const description = editUniverseDescription ? editUniverseDescription.value.trim() : '';
+
+    if (!universeId) {
+        alert('Invalid universe ID');
+        return;
+    }
+
+    if (!name) {
+        alert('Please enter a universe name');
+        return;
+    }
+
+    try {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session) {
+            alert('Please log in to edit universes');
+            return;
+        }
+
+        // Prepare update data
+        const updateData = { name: name };
+        
+        // Try to include description if provided
+        // If description column doesn't exist, we'll handle it in the error
+        if (description !== undefined) {
+            updateData.description = description || null;
+        }
+
+        const { error } = await supabase
+            .from('universes')
+            .update(updateData)
+            .eq('id', universeId);
+
+        if (error) {
+            if (error.code === '23505') { // Duplicate key error
+                alert('A universe with this name already exists');
+            } else if (error.message && error.message.includes('description')) {
+                // If error is about description column not existing, update name only
+                console.log('Description column not found, updating name only');
+                const { error: retryError } = await supabase
+                    .from('universes')
+                    .update({ name: name })
+                    .eq('id', universeId);
+                
+                if (retryError) {
+                    alert('Error updating universe: ' + retryError.message);
+                    return;
+                } else {
+                    // Hide modal and reload universes
+                    hideEditUniverseModal();
+                    loadUniverses();
+                    loadSummaryCounts();
+                    alert('Universe name updated successfully!\n\nNote: The description column does not exist in your database. To enable description editing, please run the SQL migration:\n\nALTER TABLE universes ADD COLUMN IF NOT EXISTS description TEXT;');
+                    return;
+                }
+            } else {
+                alert('Error updating universe: ' + error.message);
+            }
+            return;
+        }
+
+        // Hide modal and reload universes
+        hideEditUniverseModal();
+        loadUniverses();
+        loadSummaryCounts();
+        alert('Universe updated successfully!');
+    } catch (error) {
+        console.error('Error updating universe:', error);
+        alert('An error occurred while updating the universe');
+    }
+}
+
+// Delete Universe
+async function deleteUniverse(universeId, universeName) {
+    if (!supabase) {
+        alert('Supabase is not configured');
+        return;
+    }
+
+    if (!confirm(`Are you sure you want to delete the universe "${universeName}"? This action cannot be undone.`)) {
+        return;
+    }
+
+    try {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session) {
+            alert('Please log in to delete universes');
+            return;
+        }
+
+        const { error } = await supabase
+            .from('universes')
+            .delete()
+            .eq('id', universeId);
+
+        if (error) {
+            alert('Error deleting universe: ' + error.message);
+            return;
+        }
+
+        // Reload universes and update counts
+        loadUniverses();
+        loadSummaryCounts();
+        alert('Universe deleted successfully!');
+    } catch (error) {
+        console.error('Error deleting universe:', error);
+        alert('An error occurred while deleting the universe');
+    }
 }
 
 // Edit Character
@@ -399,7 +782,11 @@ if (supabase) {
         } else if (event === 'SIGNED_IN') {
             hideLoginModal();
             loadSummaryCounts();
-            loadCharacters();
+            if (currentView === 'characters') {
+                loadCharacters();
+            } else {
+                loadUniverses();
+            }
         }
     });
 }

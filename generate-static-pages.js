@@ -386,7 +386,7 @@ function generateCharacterPage(character, template) {
 }
 
 // Generate filter page
-function generateFilterPage(filterType, filterValue, filterLabel, characters) {
+function generateFilterPage(filterType, filterValue, filterLabel, characters, description = '') {
     const template = readFilterTemplate();
     let html = template;
     
@@ -419,6 +419,25 @@ function generateFilterPage(filterType, filterValue, filterLabel, characters) {
     html = html.replace(/<h1 class="filter-page-title"[^>]*>.*?<\/h1>/, `<h1 class="section-title">${filterLabel} Characters</h1>`);
     html = html.replace(/<h1[^>]*id="filterPageTitle"[^>]*>.*?<\/h1>/, `<h1 class="section-title">${filterLabel} Characters</h1>`);
     html = html.replace(/<h1 class="section-title">\{\{TITLE\}\}<\/h1>/, `<h1 class="section-title">${filterLabel} Characters</h1>`);
+    
+    // Add description for universe pages
+    if (filterType === 'universe' && description) {
+        html = html.replace(
+            /<p class="filter-page-description"[^>]*id="filterPageDescription"[^>]*style="display: none;"[^>]*><\/p>/,
+            `<p class="filter-page-description" id="filterPageDescription">${description}</p>`
+        );
+        // Also handle if the description element doesn't have the style attribute
+        html = html.replace(
+            /<p class="filter-page-description"[^>]*id="filterPageDescription"[^>]*><\/p>/,
+            `<p class="filter-page-description" id="filterPageDescription">${description}</p>`
+        );
+    } else {
+        // Hide description for non-universe pages or if no description
+        html = html.replace(
+            /<p class="filter-page-description"[^>]*id="filterPageDescription"[^>]*>/,
+            `<p class="filter-page-description" id="filterPageDescription" style="display: none;">`
+        );
+    }
     
     // Update paths for subdirectory (filter pages are in subdirectories)
     html = html.replace(/href="public\.css"/g, 'href="../public.css"');
@@ -614,6 +633,29 @@ async function generateAllPages() {
         const universes = [...new Set(characters.map(c => c.universe).filter(Boolean))];
         let universeCount = 0;
         
+        // Fetch all universes with descriptions
+        let universesData = [];
+        try {
+            universesData = await supabaseRequest('universes', 'name,description');
+            console.log(`   Fetched ${universesData.length} universes from database`);
+        } catch (error) {
+            console.warn(`   Warning: Could not fetch universe descriptions: ${error.message}`);
+        }
+        
+        // Create a map of universe names to descriptions
+        // Map by both slug and original name for flexible matching
+        const universeMap = {};
+        universesData.forEach(u => {
+            const slug = createSlug(u.name);
+            const nameLower = u.name.toLowerCase();
+            const nameSlug = nameLower.replace(/\s+/g, '-');
+            universeMap[slug] = u.description || '';
+            universeMap[nameSlug] = u.description || '';
+            universeMap[nameLower] = u.description || '';
+            // Also map the formatted name
+            universeMap[formatName(nameSlug).toLowerCase()] = u.description || '';
+        });
+        
         for (const universe of universes) {
             const universeChars = characters.filter(char => 
                 char.universe && char.universe.toLowerCase() === universe.toLowerCase()
@@ -621,8 +663,16 @@ async function generateAllPages() {
             
             if (universeChars.length > 0) {
                 const universeLabel = formatName(universe);
-                const html = generateFilterPage('universe', universe, universeLabel, universeChars);
-                const filePath = path.join(DIRS.universes, `${createSlug(universe)}.html`);
+                const universeSlug = createSlug(universe);
+                const universeLower = universe.toLowerCase();
+                const universeNameSlug = universeLower.replace(/\s+/g, '-');
+                // Try multiple matching strategies
+                const universeDescription = universeMap[universeSlug] || 
+                                          universeMap[universeNameSlug] || 
+                                          universeMap[universeLower] ||
+                                          universeMap[universeLabel.toLowerCase()] || '';
+                const html = generateFilterPage('universe', universe, universeLabel, universeChars, universeDescription);
+                const filePath = path.join(DIRS.universes, `${universeSlug}.html`);
                 fs.writeFileSync(filePath, html, 'utf8');
                 universeCount++;
             }

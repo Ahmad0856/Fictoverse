@@ -325,6 +325,7 @@ function setupEventListeners() {
     const saveUniverseBtn = document.getElementById('saveUniverseBtn');
     const cancelUniverseBtn = document.getElementById('cancelUniverseBtn');
     const newUniverseName = document.getElementById('newUniverseName');
+    const newUniverseDescription = document.getElementById('newUniverseDescription');
 
     if (addUniverseBtn) {
         addUniverseBtn.addEventListener('click', () => {
@@ -341,8 +342,10 @@ function setupEventListeners() {
                 return;
             }
 
-            await createUniverse(name);
+            const description = newUniverseDescription.value.trim();
+            await createUniverse(name, description);
             newUniverseName.value = '';
+            newUniverseDescription.value = '';
             addUniverseInput.style.display = 'none';
         });
     }
@@ -350,6 +353,7 @@ function setupEventListeners() {
     if (cancelUniverseBtn) {
         cancelUniverseBtn.addEventListener('click', () => {
             newUniverseName.value = '';
+            newUniverseDescription.value = '';
             addUniverseInput.style.display = 'none';
         });
     }
@@ -391,7 +395,7 @@ function setupEventListeners() {
 }
 
 // Create new Universe
-async function createUniverse(name) {
+async function createUniverse(name, description = '') {
     if (!supabase) {
         alert('Supabase is not configured');
         return;
@@ -404,9 +408,14 @@ async function createUniverse(name) {
             return;
         }
 
+        const universeData = { name: name };
+        if (description) {
+            universeData.description = description;
+        }
+
         const { data, error } = await supabase
             .from('universes')
-            .insert([{ name: name }])
+            .insert([universeData])
             .select();
 
         if (error) {

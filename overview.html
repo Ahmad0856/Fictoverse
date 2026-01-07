@@ -59,20 +59,20 @@
 
         <!-- Main Content Area -->
         <main class="content-area">
-            <!-- Summary Cards -->
+            <!-- Summary Cards (Tabs) -->
             <div class="summary-cards">
-                <div class="summary-card card-characters">
+                <div class="summary-card card-characters active-tab" id="charactersTab">
                     <div class="card-label">Characters</div>
                     <div class="card-value" id="charactersCount">0</div>
                 </div>
-                <div class="summary-card card-universes">
+                <div class="summary-card card-universes" id="universesTab">
                     <div class="card-label">Universes</div>
                     <div class="card-value" id="universesCount">0</div>
                 </div>
             </div>
 
             <!-- Characters Table -->
-            <div class="characters-table-container">
+            <div class="characters-table-container" id="charactersTableContainer">
                 <div class="table-header">
                     <h2 class="table-title">Characters</h2>
                     <button class="btn-add-character" id="addCharacterBtn" title="Add New Character">
@@ -93,6 +93,25 @@
                     </tbody>
                 </table>
             </div>
+
+            <!-- Universes Table -->
+            <div class="characters-table-container" id="universesTableContainer" style="display: none;">
+                <div class="table-header">
+                    <h2 class="table-title">Universes</h2>
+                </div>
+                <table class="characters-table">
+                    <thead>
+                        <tr>
+                            <th class="col-character">Universe Name</th>
+                            <th class="col-universe">Created</th>
+                            <th class="col-actions">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="universesTableBody">
+                        <!-- Universes will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
         </main>
     </div>
 
@@ -110,6 +129,28 @@
                     <input type="password" id="password" required>
                 </div>
                 <button type="submit" class="btn btn-add">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Universe Modal -->
+    <div class="login-modal" id="editUniverseModal">
+        <div class="login-container">
+            <h2>Edit Universe</h2>
+            <form id="editUniverseForm">
+                <input type="hidden" id="editUniverseId">
+                <div class="form-group">
+                    <label for="editUniverseName">Universe Name</label>
+                    <input type="text" id="editUniverseName" required>
+                </div>
+                <div class="form-group">
+                    <label for="editUniverseDescription">Description</label>
+                    <textarea id="editUniverseDescription" rows="4" placeholder="Enter universe description (optional)"></textarea>
+                </div>
+                <div style="display: flex; gap: 12px; justify-content: flex-end;">
+                    <button type="button" class="btn btn-cancel" id="cancelEditUniverseBtn">Cancel</button>
+                    <button type="submit" class="btn btn-add">Save Changes</button>
+                </div>
             </form>
         </div>
     </div>

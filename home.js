@@ -86,7 +86,7 @@ function createCharacterCard(character) {
 }
 
 // Load and display characters for a specific month
-async function loadMonthBirthdays(month, containerId, seeMoreId, limit = null) {
+async function loadMonthBirthdays(month, containerId, seeMoreId) {
     const container = document.getElementById(containerId);
     const seeMoreContainer = document.getElementById(seeMoreId);
     const supabase = window.supabaseClient;
@@ -127,18 +127,12 @@ async function loadMonthBirthdays(month, containerId, seeMoreId, limit = null) {
 
         // Sort characters
         const sortedCharacters = sortCharacters(data);
-        
-        // Apply limit if specified
-        const displayCharacters = limit ? sortedCharacters.slice(0, limit) : sortedCharacters;
-        const totalCount = sortedCharacters.length;
 
-        // Display characters (limited if specified)
-        container.innerHTML = displayCharacters.map(createCharacterCard).join('');
+        // Display all characters (no limit for month view)
+        container.innerHTML = sortedCharacters.map(createCharacterCard).join('');
 
         // Show "See More" button linking to the month filter page
-        // Only show if there are more characters than the limit (or if no limit was set and there are characters)
-        const shouldShowMore = limit ? totalCount > limit : totalCount > 0;
-        if (shouldShowMore) {
+        if (sortedCharacters.length > 0) {
             const monthName = getMonthName(month);
             // Create slug matching the format used in generate-static-pages.js
             const monthSlug = monthName
@@ -204,7 +198,7 @@ async function loadBirthdays() {
 
     await Promise.all([
         loadMonthBirthdays(currentMonth, 'thisMonthBirthdays', 'thisMonthSeeMore'),
-        loadMonthBirthdays(nextMonth, 'nextMonthBirthdays', 'nextMonthSeeMore', 3)
+        loadMonthBirthdays(nextMonth, 'nextMonthBirthdays', 'nextMonthSeeMore')
     ]);
 }
 
@@ -290,24 +284,12 @@ function setupSearch() {
         }, 300); // Debounce for 300ms
     });
 
-    // Handle Enter key - navigate to search page or no-results page
+    // Handle Enter key - navigate to search page
     searchInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
             const searchTerm = searchInput.value.trim();
             if (searchTerm) {
-                // Perform search to check if there are results
-                const term = searchTerm.toLowerCase().trim();
-                const hasResults = allCharacters.some(char => 
-                    char.character_name && char.character_name.toLowerCase().includes(term)
-                );
-                
-                if (hasResults) {
-                    // Navigate to search results page
-                    window.location.href = `public-index.html?search=${encodeURIComponent(searchTerm)}`;
-                } else {
-                    // Navigate to no-results page
-                    window.location.href = `no-results.html?search=${encodeURIComponent(searchTerm)}`;
-                }
+                window.location.href = `public-index.html?search=${encodeURIComponent(searchTerm)}`;
             } else {
                 window.location.href = 'public-index.html';
             }
