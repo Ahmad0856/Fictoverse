@@ -8,39 +8,64 @@
     <link rel="icon" type="image/png" href="assets/Logo main.png">
     <link rel="stylesheet" href="public.css">
     <style>
-        .no-results-container {
+        /* No Results Page Styles */
+        .no-results-main {
             min-height: calc(100vh - 200px);
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 48px 24px;
+            padding: 80px 24px;
+            background: linear-gradient(to bottom, #ffffff 0%, #f9fafb 100%);
+        }
+
+        .no-results-container {
+            max-width: 600px;
+            width: 100%;
             text-align: center;
         }
 
+        .no-results-icon-wrapper {
+            margin-bottom: 32px;
+            display: flex;
+            justify-content: center;
+        }
+
         .no-results-icon {
-            font-size: 80px;
-            margin-bottom: 24px;
-            opacity: 0.6;
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #e0e7ff 0%, #dbeafe 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            margin: 0 auto;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
         }
 
         .no-results-title {
-            font-size: 32px;
+            font-size: 36px;
             font-weight: 700;
             color: #111827;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+            line-height: 1.2;
         }
 
         .no-results-message {
-            font-size: 16px;
+            font-size: 18px;
             color: #6b7280;
             margin-bottom: 48px;
+            line-height: 1.6;
             max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .no-results-search-container {
-            max-width: 500px;
-            width: 100%;
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.1);
             margin-bottom: 32px;
         }
 
@@ -49,15 +74,17 @@
             align-items: center;
             background-color: #f9fafb;
             border: 2px solid #e5e7eb;
-            border-radius: 999px;
-            padding: 12px 20px;
+            border-radius: 12px;
+            padding: 14px 20px;
             gap: 12px;
-            margin-bottom: 24px;
-            transition: border-color 0.2s;
+            margin-bottom: 20px;
+            transition: all 0.2s ease;
         }
 
         .no-results-search-bar:focus-within {
             border-color: #3b82f6;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
         .no-results-search-input {
@@ -67,6 +94,7 @@
             outline: none;
             font-size: 16px;
             color: #111827;
+            font-weight: 400;
         }
 
         .no-results-search-input::placeholder {
@@ -76,62 +104,109 @@
         .no-results-search-icon {
             font-size: 20px;
             color: #6b7280;
+            flex-shrink: 0;
         }
 
         .search-cta-button {
-            background-color: #3b82f6;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
             color: #ffffff;
             border: none;
-            border-radius: 999px;
-            padding: 14px 32px;
+            border-radius: 12px;
+            padding: 16px 32px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: background-color 0.2s, transform 0.1s;
+            transition: all 0.2s ease;
             width: 100%;
-            max-width: 300px;
+            box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         .search-cta-button:hover {
-            background-color: #2563eb;
-            transform: translateY(-1px);
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(59, 130, 246, 0.3);
         }
 
         .search-cta-button:active {
             transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+        }
+
+        .search-cta-button svg {
+            width: 20px;
+            height: 20px;
         }
 
         .back-to-home {
-            margin-top: 32px;
-            font-size: 14px;
+            margin-top: 24px;
+            font-size: 15px;
             color: #6b7280;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
         }
 
         .back-to-home a {
             color: #3b82f6;
             text-decoration: none;
             font-weight: 500;
+            transition: color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .back-to-home a:hover {
+            color: #2563eb;
             text-decoration: underline;
         }
 
+        .back-to-home a svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .divider {
+            color: #d1d5db;
+        }
+
         @media (max-width: 768px) {
+            .no-results-main {
+                padding: 48px 16px;
+            }
+
             .no-results-icon {
-                font-size: 60px;
+                width: 100px;
+                height: 100px;
+                font-size: 52px;
             }
 
             .no-results-title {
-                font-size: 24px;
+                font-size: 28px;
             }
 
             .no-results-message {
-                font-size: 14px;
+                font-size: 16px;
+                margin-bottom: 32px;
             }
 
             .no-results-search-container {
-                max-width: 100%;
+                padding: 24px;
+            }
+
+            .back-to-home {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .divider {
+                display: none;
             }
         }
     </style>
@@ -188,26 +263,48 @@
     </header>
 
     <!-- Main Content -->
-    <main class="no-results-container">
-        <div class="no-results-icon">🔍</div>
-        <h1 class="no-results-title">No Results Found</h1>
-        <p class="no-results-message">We couldn't find any characters matching your search. Try a different search term or browse our popular characters.</p>
-        
-        <div class="no-results-search-container">
-            <div class="no-results-search-bar">
-                <input type="text" 
-                       placeholder="Search for a character..." 
-                       class="no-results-search-input" 
-                       id="noResultsSearchInput"
-                       autofocus>
-                <span class="no-results-search-icon">🔍</span>
+    <main class="no-results-main">
+        <div class="no-results-container">
+            <div class="no-results-icon-wrapper">
+                <div class="no-results-icon">🔍</div>
             </div>
-            <button class="search-cta-button" id="searchCtaButton">Search Character</button>
-        </div>
+            <h1 class="no-results-title">No Results Found</h1>
+            <p class="no-results-message">We couldn't find any characters matching your search. Try a different search term or browse our popular characters.</p>
+            
+            <div class="no-results-search-container">
+                <div class="no-results-search-bar">
+                    <input type="text" 
+                           placeholder="Search for a character..." 
+                           class="no-results-search-input" 
+                           id="noResultsSearchInput"
+                           autofocus>
+                    <span class="no-results-search-icon">🔍</span>
+                </div>
+                <button class="search-cta-button" id="searchCtaButton">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    Search Character
+                </button>
+            </div>
 
-        <div class="back-to-home">
-            <a href="index.html">← Back to Home</a> | 
-            <a href="popular.html">Browse Popular Characters</a>
+            <div class="back-to-home">
+                <a href="index.html">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m12 19-7-7 7-7"></path>
+                        <path d="M19 12H5"></path>
+                    </svg>
+                    Back to Home
+                </a>
+                <span class="divider">|</span>
+                <a href="popular.html">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    Browse Popular Characters
+                </a>
+            </div>
         </div>
     </main>
 
