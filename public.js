@@ -1146,7 +1146,10 @@ async function setupBoostButton(characterId, currentBoostCount) {
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
-    loadCharacter();
+    // Only load character if this is a character profile page (not no-results page)
+    if (!window.IS_NO_RESULTS_PAGE) {
+        loadCharacter();
+    }
     setupSearch();
     setupRandomCharacterButton();
 });

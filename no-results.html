@@ -338,6 +338,10 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // Prevent public.js from loading character on this page
+        window.IS_NO_RESULTS_PAGE = true;
+    </script>
     <script src="public.js"></script>
     <script>
         // Setup search functionality for no-results page
