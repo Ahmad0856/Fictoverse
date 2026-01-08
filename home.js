@@ -86,7 +86,7 @@ function createCharacterCard(character) {
 }
 
 // Load and display characters for a specific month
-async function loadMonthBirthdays(month, containerId, seeMoreId) {
+async function loadMonthBirthdays(month, containerId, seeMoreId, limit = null) {
     const container = document.getElementById(containerId);
     const seeMoreContainer = document.getElementById(seeMoreId);
     const supabase = window.supabaseClient;
@@ -127,14 +127,36 @@ async function loadMonthBirthdays(month, containerId, seeMoreId) {
 
         // Sort characters
         const sortedCharacters = sortCharacters(data);
+        
+        // Apply limit if specified
+        const charactersToDisplay = limit ? sortedCharacters.slice(0, limit) : sortedCharacters;
+        const totalCharacters = sortedCharacters.length;
 
-        // Display all characters (no limit for month view)
-        container.innerHTML = sortedCharacters.map(createCharacterCard).join('');
+        // Display characters (with limit if specified)
+        container.innerHTML = charactersToDisplay.map(createCharacterCard).join('');
 
-        // Show "See More" button linking to the month filter page
-        if (sortedCharacters.length > 0) {
+        // Show "See More" button only if there are more characters than the limit
+        if (limit && totalCharacters > limit) {
             const monthName = getMonthName(month);
             // Create slug matching the format used in generate-static-pages.js
+            const monthSlug = monthName
+                .toLowerCase()
+                .trim()
+                .replace(/[^\w\s-]/g, '')
+                .replace(/[\s_-]+/g, '-')
+                .replace(/^-+|-+$/g, '');
+            seeMoreContainer.innerHTML = `
+                <button class="see-more-button-large" onclick="window.location.href='birthday/${monthSlug}.html'">
+                    <span>See More</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            `;
+            seeMoreContainer.style.display = 'flex';
+        } else if (!limit && totalCharacters > 0) {
+            // If no limit, show "See More" button for all months
+            const monthName = getMonthName(month);
             const monthSlug = monthName
                 .toLowerCase()
                 .trim()
@@ -198,7 +220,7 @@ async function loadBirthdays() {
 
     await Promise.all([
         loadMonthBirthdays(currentMonth, 'thisMonthBirthdays', 'thisMonthSeeMore'),
-        loadMonthBirthdays(nextMonth, 'nextMonthBirthdays', 'nextMonthSeeMore')
+        loadMonthBirthdays(nextMonth, 'nextMonthBirthdays', 'nextMonthSeeMore', 3)
     ]);
 }
 

@@ -53,6 +53,61 @@ function formatName(name) {
     ).join(' ');
 }
 
+// Helper function to escape HTML entities
+function escapeHtml(text) {
+    if (!text) return '';
+    return String(text)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
+// Generate meta description for filter pages
+function generateFilterMetaDescription(filterType, filterLabel, characterCount, description = '') {
+    const baseUrl = 'https://fictionalbirthdays.com';
+    
+    if (filterType === 'universe' && description) {
+        // Truncate description to fit in meta description (max 120 chars for the description part)
+        const shortDesc = description.length > 120 ? description.substring(0, 117) + '...' : description;
+        return `Discover ${characterCount} ${filterLabel} characters on FictoVerse. ${shortDesc}`;
+    }
+    
+    const typeDescriptions = {
+        'category': `Browse ${characterCount} ${filterLabel} characters including birthdays, powers, and fun facts on FictoVerse.`,
+        'universe': `Explore ${characterCount} ${filterLabel} characters with detailed profiles, birthdays, powers, and more on FictoVerse.`,
+        'birthday': `Find ${characterCount} fictional characters born in ${filterLabel}. View their profiles, powers, and fun facts on FictoVerse.`,
+        'sign': `Discover ${characterCount} ${filterLabel} fictional characters. View their birthdays, powers, and detailed profiles on FictoVerse.`
+    };
+    
+    return typeDescriptions[filterType] || `Discover ${characterCount} ${filterLabel} characters on FictoVerse.`;
+}
+
+// Generate Open Graph and Twitter Card meta tags
+function generateSocialMetaTags(title, description, imageUrl = '', pageUrl = '') {
+    const baseUrl = 'https://fictionalbirthdays.com';
+    const fullImageUrl = imageUrl ? (imageUrl.startsWith('http') ? imageUrl : `${baseUrl}/${imageUrl}`) : `${baseUrl}/assets/Logo main.png`;
+    const fullPageUrl = pageUrl ? (pageUrl.startsWith('http') ? pageUrl : `${baseUrl}/${pageUrl}`) : baseUrl;
+    
+    const escapedTitle = escapeHtml(title);
+    const escapedDesc = escapeHtml(description);
+    
+    return `
+    <meta property="og:title" content="${escapedTitle}">
+    <meta property="og:description" content="${escapedDesc}">
+    <meta property="og:image" content="${fullImageUrl}">
+    <meta property="og:url" content="${fullPageUrl}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="FictoVerse">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@fictionalb39031">
+    <meta name="twitter:creator" content="@fictionalb39031">
+    <meta name="twitter:title" content="${escapedTitle}">
+    <meta name="twitter:description" content="${escapedDesc}">
+    <meta name="twitter:image" content="${fullImageUrl}">`;
+}
+
 // Helper function to make Supabase API request
 function supabaseRequest(table, select = '*', filters = {}) {
     return new Promise((resolve, reject) => {
@@ -232,6 +287,11 @@ function getBasicFilterTemplate() {
                     <a href="https://www.instagram.com/fictionalbirthdays?igsh=dW16ODdteHFuaGt5" class="social-icon-link" target="_blank" rel="noopener noreferrer">
                         <img src="../assets/instagram.png" alt="Instagram" class="social-icon-image">
                     </a>
+                    <a href="https://x.com/fictionalb39031" class="social-icon-link" target="_blank" rel="noopener noreferrer">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="social-icon-image" style="width: 24px; height: 24px;">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
@@ -260,7 +320,42 @@ function generateCharacterPage(character, template) {
     
     // Update page title and meta description
     html = html.replace(/<title>.*?<\/title>/, `<title>${character.character_name} - FictoVerse</title>`);
-    html = html.replace(/<meta name="description".*?>/, `<meta name="description" content="View ${character.character_name}'s profile including birthday, powers, and fun facts on FictoVerse.">`);
+    
+    // Create more detailed meta description
+    let characterMetaDesc = '';
+    if (character.about && character.about.trim()) {
+        const aboutText = character.about.trim();
+        const truncatedAbout = aboutText.length > 100 ? aboutText.substring(0, 97) + '...' : aboutText;
+        const birthdayText = character.birthday ? ` Birthday: ${character.birthday}.` : '';
+        characterMetaDesc = `${character.character_name}: ${truncatedAbout}${birthdayText} View full profile on FictoVerse.`;
+    } else {
+        const birthdayText = character.birthday ? ` Birthday: ${character.birthday}.` : '';
+        const universeText = character.universe ? ` From ${character.universe}.` : '';
+        characterMetaDesc = `View ${character.character_name}'s profile including${birthdayText}${universeText} powers, and fun facts on FictoVerse.`;
+    }
+    
+    // Ensure meta description is within 160 characters (optimal length)
+    if (characterMetaDesc.length > 160) {
+        characterMetaDesc = characterMetaDesc.substring(0, 157) + '...';
+    }
+    
+    // Update or add meta description
+    if (html.includes('<meta name="description"')) {
+        html = html.replace(/<meta name="description".*?>/, `<meta name="description" content="${escapeHtml(characterMetaDesc)}">`);
+    } else {
+        html = html.replace(/<meta name="viewport"[^>]*>/, `$&\n    <meta name="description" content="${escapeHtml(characterMetaDesc)}">`);
+    }
+    
+    // Add social media meta tags
+    const characterImageUrl = character.image_url || '';
+    const characterPageUrl = `character/${slug}.html`;
+    const socialTags = generateSocialMetaTags(
+        `${character.character_name} - FictoVerse`,
+        characterMetaDesc,
+        characterImageUrl,
+        characterPageUrl
+    );
+    html = html.replace(/<meta name="description"[^>]*>/, `$&${socialTags}`);
     
     // Update CSS path (character pages are in subdirectory)
     html = html.replace(/href="public\.css"/g, 'href="../public.css"');
@@ -313,6 +408,16 @@ function generateCharacterPage(character, template) {
     // Add Contact us link after Game link if it doesn't exist
     html = html.replace(/(<a href="\.\.\/public-game\.html" class="footer-nav-link">Game<\/a>)(?![\s\S]*?<a href="\.\.\/contact-us\.html")/g, 
         '$1\n                    <a href="../contact-us.html" class="footer-nav-link">Contact us</a>');
+    
+    // Add Twitter link to footer social section if it doesn't exist
+    const twitterLink = `<a href="https://x.com/fictionalb39031" class="social-icon-link" target="_blank" rel="noopener noreferrer">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="social-icon-image" style="width: 24px; height: 24px;">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>`;
+    // Add Twitter after Instagram if it doesn't exist
+    html = html.replace(/(<a href="https:\/\/www\.instagram\.com\/fictionalbirthdays[^>]*>[\s\S]*?<\/a>)(?![\s\S]*?<a href="https:\/\/x\.com\/fictionalb39031")/g, 
+        `$1\n                    ${twitterLink}`);
     
     // Update Popular nav link (character pages are in subdirectory)
     html = html.replace(/onclick="window\.location\.href='popular\.html'"/g, 'onclick="window.location.href=\'../popular.html\'"');
@@ -413,6 +518,29 @@ function generateFilterPage(filterType, filterValue, filterLabel, characters, de
     
     // Update page title in HTML
     html = html.replace(/<title>.*?<\/title>/, `<title>${filterLabel} Characters - FictoVerse</title>`);
+    
+    // Generate and add meta description for filter pages
+    const filterMetaDesc = generateFilterMetaDescription(filterType, filterLabel, characters.length, description);
+    // Ensure meta description is within 160 characters
+    const finalMetaDesc = filterMetaDesc.length > 160 ? filterMetaDesc.substring(0, 157) + '...' : filterMetaDesc;
+    
+    // Update or add meta description
+    if (html.includes('<meta name="description"')) {
+        html = html.replace(/<meta name="description".*?>/, `<meta name="description" content="${escapeHtml(finalMetaDesc)}">`);
+    } else {
+        html = html.replace(/<meta name="viewport"[^>]*>/, `$&\n    <meta name="description" content="${escapeHtml(finalMetaDesc)}">`);
+    }
+    
+    // Add social media meta tags for filter pages
+    const filterPageUrl = `${filterType}/${createSlug(filterValue)}.html`;
+    const socialTags = generateSocialMetaTags(
+        `${filterLabel} Characters - FictoVerse`,
+        finalMetaDesc,
+        '',
+        filterPageUrl
+    );
+    html = html.replace(/<meta name="description"[^>]*>/, `$&${socialTags}`);
+    
     // Add favicon to prevent 404
     html = html.replace(/<link rel="stylesheet"/, `<link rel="icon" href="data:,">\n    <link rel="stylesheet"`);
     // Update h1 title to use section-title class like popular page
