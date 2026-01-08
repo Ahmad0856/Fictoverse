@@ -9,3 +9,4 @@ ADD COLUMN IF NOT EXISTS description TEXT;
 -- Add a comment to the column
 COMMENT ON COLUMN universes.description IS 'Description of the universe';
 
+

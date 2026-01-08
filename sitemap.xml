@@ -2,37 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://fictionalbirthdays.com/</loc>
-    <lastmod>2026-01-07</lastmod>
+    <lastmod>2026-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://fictionalbirthdays.com/home.html</loc>
-    <lastmod>2026-01-07</lastmod>
+    <lastmod>2026-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://fictionalbirthdays.com/characters</loc>
-    <lastmod>2026-01-07</lastmod>
+    <lastmod>2026-01-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://fictionalbirthdays.com/universes</loc>
-    <lastmod>2026-01-07</lastmod>
+    <lastmod>2026-01-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://fictionalbirthdays.com/about</loc>
-    <lastmod>2026-01-07</lastmod>
+    <lastmod>2026-01-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fictionalbirthdays.com/contact</loc>
-    <lastmod>2026-01-07</lastmod>
+    <lastmod>2026-01-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -595,56 +595,56 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://fictionalbirthdays.com/universe/marvel</loc>
-    <lastmod>2025-12-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://fictionalbirthdays.com/universe/dc</loc>
-    <lastmod>2025-12-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://fictionalbirthdays.com/universe/custom</loc>
     <lastmod>2025-12-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://fictionalbirthdays.com/universe/jujitsu-kaisen</loc>
-    <lastmod>2025-12-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://fictionalbirthdays.com/universe/demon-slayer</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://fictionalbirthdays.com/universe/just-a-goblin</loc>
-    <lastmod>2025-12-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://fictionalbirthdays.com/universe/the-steller-swordsman</loc>
-    <lastmod>2026-01-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://fictionalbirthdays.com/universe/tower-of-god</loc>
-    <lastmod>2026-01-04</lastmod>
+    <lastmod>2026-01-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://fictionalbirthdays.com/universe/black-clover</loc>
-    <lastmod>2026-01-04</lastmod>
+    <lastmod>2026-01-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://fictionalbirthdays.com/universe/jujitsu-kaisen</loc>
+    <lastmod>2026-01-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://fictionalbirthdays.com/universe/dc</loc>
+    <lastmod>2026-01-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://fictionalbirthdays.com/universe/marvel</loc>
+    <lastmod>2026-01-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://fictionalbirthdays.com/universe/the-steller-swordsman</loc>
+    <lastmod>2026-01-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://fictionalbirthdays.com/universe/demon-slayer</loc>
+    <lastmod>2026-01-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://fictionalbirthdays.com/universe/tower-of-god</loc>
+    <lastmod>2026-01-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
