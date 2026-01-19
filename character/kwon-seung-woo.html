@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kwon Seung-Woo - FictoVerse</title>
+    <meta name="description" content="Kwon Seung-Woo: Kwon Seung-Woo was once called a genius.
+Praised. Envied. Promised greatness.
+But the world has a... Birthday: 06-03. View full profile on Fi...">
+    <meta property="og:title" content="Kwon Seung-Woo - FictoVerse">
+    <meta property="og:description" content="Kwon Seung-Woo: Kwon Seung-Woo was once called a genius.
+Praised. Envied. Promised greatness.
+But the world has a... Birthday: 06-03. View full profile on Fi...">
+    <meta property="og:image" content="https://vmkuoyxvbcmaayetcbzq.supabase.co/storage/v1/object/public/character-images/characters/0.09439129394109036.jpeg">
+    <meta property="og:url" content="https://fictionalbirthdays.com/character/kwon-seung-woo.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="FictoVerse">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@fictionalb39031">
+    <meta name="twitter:creator" content="@fictionalb39031">
+    <meta name="twitter:title" content="Kwon Seung-Woo - FictoVerse">
+    <meta name="twitter:description" content="Kwon Seung-Woo: Kwon Seung-Woo was once called a genius.
+Praised. Envied. Promised greatness.
+But the world has a... Birthday: 06-03. View full profile on Fi...">
+    <meta name="twitter:image" content="https://vmkuoyxvbcmaayetcbzq.supabase.co/storage/v1/object/public/character-images/characters/0.09439129394109036.jpeg">
+    <link rel="icon" type="image/png" href="assets/Logo main.png">
+    <link rel="stylesheet" href="../public.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="public-header">
+        <div class="header-container">
+            <div class="header-left">
+                <a href="../index.html" class="public-logo"><img src="../assets/Logo main.png" alt="FictoVerse Logo" class="logo-image"></a>
+            </div>
+            <div class="header-center">
+                <div class="public-search-bar" id="searchBarContainer">
+                    <input type="text" placeholder="Search character" class="public-search-input" id="searchInput">
+                    <span class="public-search-icon">🔍</span>
+                    <div class="search-results" id="searchResults" style="display: none;"></div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="nav-icon-item" id="randomCharacterBtn">
+                    <div class="nav-icon-wrapper">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 3h5v5"></path>
+                            <path d="M8 3H3v5"></path>
+                            <path d="M12 22v-8.3a4 4 0 0 0-1.172-2.872L4 3"></path>
+                            <path d="m21 3-5 5"></path>
+                            <path d="M3 21l5-5"></path>
+                            <path d="M8 21h5v-5"></path>
+                            <path d="M16 21h5v-5"></path>
+                        </svg>
+                    </div>
+                    <span class="nav-icon-label">Random</span>
+                </div>
+                <div class="nav-icon-item" onclick="window.location.href='../popular.html'">
+                    <div class="nav-icon-wrapper">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                    </div>
+                    <span class="nav-icon-label">Popular</span>
+                </div>
+                <div class="nav-icon-item" onclick="window.location.href='../public-game.html'">
+                    <div class="nav-icon-wrapper">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 12h4m-2-2v4m8-8h.01M18 12h.01M15 9h.01M15 15h.01M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z"></path>
+                        </svg>
+                    </div>
+                    <span class="nav-icon-label">Game</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Character Profile -->
+    <main class="character-profile-main">
+        <div class="character-profile-container">
+            <!-- Character Hero Section -->
+            <section class="character-hero">
+                <div class="character-image-wrapper">
+                    <img id="characterImage" src="" alt="Character" class="character-image">
+                    <button class="random-button-mobile" id="randomCharacterBtnMobile">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 3h5v5"></path>
+                            <path d="M8 3H3v5"></path>
+                            <path d="M12 22v-8.3a4 4 0 0 0-1.172-2.872L4 3"></path>
+                            <path d="m21 3-5 5"></path>
+                            <path d="M3 21l5-5"></path>
+                            <path d="M8 21h5v-5"></path>
+                            <path d="M16 21h5v-5"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="character-info-main">
+                    <div class="character-header">
+                        <div>
+                            <h1 class="character-name" id="characterName">Character Name</h1>
+                            <p class="character-category" id="characterCategory">Universe Character</p>
+                        </div>
+                        <div class="boost-section">
+                            <button class="boost-button" id="boostButton">
+                                <span class="boost-text">Boost</span>
+                            </button>
+                            <div class="boost-count" id="boostCount">0</div>
+                        </div>
+                    </div>
+                    <div class="character-details-grid">
+                        <div class="detail-item">
+                            <span class="detail-label">Birthday</span>
+                            <span class="detail-value" id="characterBirthday">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Sign</span>
+                            <span class="detail-value" id="characterSign">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Debut Year</span>
+                            <span class="detail-value" id="characterDebutYear">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Category</span>
+                            <span class="detail-value" id="characterCategoryValue">-</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Character Details Sections -->
+            <section class="character-details-sections">
+                <div class="detail-section">
+                    <h2 class="section-title">About</h2>
+                    <p class="section-content" id="characterAbout">-</p>
+                </div>
+
+                <div class="detail-section" id="nicknameSection" style="display: none;">
+                    <h2 class="section-title">Nickname</h2>
+                    <p class="section-content" id="characterNickname">-</p>
+                </div>
+
+                <div class="detail-section" id="powersSection" style="display: none;">
+                    <h2 class="section-title">Powers / Skills</h2>
+                    <p class="section-content" id="characterPowers">-</p>
+                </div>
+
+                <div class="detail-section" id="loveInterestSection" style="display: none;">
+                    <h2 class="section-title">Love Interest</h2>
+                    <p class="section-content" id="characterLoveInterest">-</p>
+                </div>
+
+                <div class="detail-section" id="funFactSection" style="display: none;">
+                    <h2 class="section-title">Fun fact</h2>
+                    <p class="section-content" id="characterFunFact">-</p>
+                </div>
+
+                <div class="detail-section">
+                    <h2 class="section-title">Fame</h2>
+                    <div class="fame-badges" id="fameBadges">
+                        <!-- Badges will be populated dynamically -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- More Characters Sections -->
+            <section class="related-characters-section" id="moreUniverseSection">
+                <h2 class="section-heading" id="moreUniverseHeading">More Characters</h2>
+                <div class="character-cards-container" id="moreUniverseCards">
+                    <!-- Character cards will be populated dynamically -->
+                </div>
+            </section>
+
+            <section class="related-characters-section" id="sameBirthdaySection">
+                <h2 class="section-heading" id="sameBirthdayHeading">Born in February</h2>
+                <div class="character-cards-container" id="sameBirthdayCards">
+                    <!-- Character cards will be populated dynamically -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="public-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <div class="footer-logo"><img src="../assets/Logo main.png" alt="FictoVerse Logo" class="logo-image-footer"></div>
+                <p class="copyright">© 2026 FictionalBirthdays. All Rights Reserved.</p>
+                <p class="privacy-link">
+                    <a href="../privacy-policy.html">Privacy Policy</a> | 
+                    <a href="../terms-of-use.html">Terms of Use</a>
+                </p>
+            </div>
+            <div class="footer-right">
+                <div class="footer-nav">
+                    <a href="../about-us.html" class="footer-nav-link">About us</a>
+                    <a href="../index.html" class="footer-nav-link">Home</a>
+                    <a href="../public-game.html" class="footer-nav-link">Game</a>
+                    <a href="../contact-us.html" class="footer-nav-link">Contact us</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/fictionalbirthdays?igsh=dW16ODdteHFuaGt5" class="social-icon-link" target="_blank" rel="noopener noreferrer">
+                        <img src="../assets/instagram.png" alt="Instagram" class="social-icon-image">
+                    </a>
+                    <a href="https://x.com/fictionalb39031" class="social-icon-link" target="_blank" rel="noopener noreferrer">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="social-icon-image" style="width: 24px; height: 24px;">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="https://x.com/fictionalb39031" class="social-icon-link" target="_blank" rel="noopener noreferrer">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="social-icon-image" style="width: 24px; height: 24px;">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../public.js"></script>
+<script type="text/javascript"> var infolinks_pid = 3442574; var infolinks_wsid = 0; </script> <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
+
+    <script>
+        // Auto-load this character by ID
+        window.CHARACTER_ID = '69c01c4a-559a-4f68-9dae-77222e7d73d6';
+        window.CHARACTER_SLUG = 'kwon-seung-woo';
+    </script>
+<script type="text/javascript"> var infolinks_pid = 3442574; var infolinks_wsid = 0; </script> <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script></body>
+</html>
